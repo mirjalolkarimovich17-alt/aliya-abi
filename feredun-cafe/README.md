@@ -1,7 +1,7 @@
 # Feredun Cafe — veb-sayt
 
 Termiz shahridagi **Feredun Cafe (Sharqona oilaviy restoran)** uchun bir sahifali, mobilga moslashgan sayt.
-Hech qanday build kerak emas — oddiy HTML/CSS/JS.
+Butun sayt bitta fayl: `index.html` (CSS va JS ichida).
 
 ## Ishga tushirish
 `index.html` ni brauzerda oching yoki:
@@ -28,12 +28,12 @@ Restoranning haqiqiy rasmlarini (Instagram'dan yoki o'zingiz suratga olgan) quyi
 | Shashlik assorti | `images/menu/assorti-shashlik.jpg` |
 | Jo'ja tabaka | `images/menu/joja-tabaka.jpg` |
 | Barra | `images/menu/barra.jpg` |
-| ... | to'liq ro'yxat: `js/menu-data.js` dagi `id` maydoni |
+| ... | to'liq ro'yxat: `index.html` ichidagi `MENU_ITEMS` dagi `id` maydoni |
 
 Galereya rasmlari: `images/gallery/1.jpg` … `6.jpg`.
 
 ## Menyu va narxlarni tahrirlash
-Barcha taomlar, tavsiflar va narxlar `js/menu-data.js` faylida.
+Barcha taomlar, tavsiflar va narxlar `index.html` ichidagi `MENU_ITEMS` ro'yxatida.
 **Diqqat:** hozirgi narxlar taxminiy — restoranning amaldagi narxlari bilan almashtiring.
 
 ## Aloqa ma'lumotlari

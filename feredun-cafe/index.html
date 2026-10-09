@@ -9,7 +9,345 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css" />
+  <style>
+:root {
+  --bg: #14100c;
+  --bg-2: #1c1611;
+  --card: #241c15;
+  --line: rgba(232, 196, 128, 0.14);
+  --text: #f4ece0;
+  --muted: #b5a690;
+  --gold: #d9a54a;
+  --gold-2: #f0c36d;
+  --ember: #c4502b;
+  --radius: 18px;
+  --shadow: 0 20px 50px -20px rgba(0, 0, 0, 0.7);
+  --serif: "Playfair Display", Georgia, serif;
+  --sans: "Manrope", system-ui, -apple-system, sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+body {
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+img { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; cursor: pointer; border: 0; background: none; color: inherit; }
+h1, h2, h3 { font-family: var(--serif); line-height: 1.15; font-weight: 700; }
+h2 { font-size: clamp(2rem, 4vw, 3rem); }
+.container { width: min(1200px, 100% - 32px); margin-inline: auto; }
+.muted { color: var(--muted); }
+.center { text-align: center; padding: 2rem 0; }
+.eyebrow {
+  text-transform: uppercase; letter-spacing: .22em; font-size: .78rem;
+  color: var(--gold); font-weight: 700; margin-bottom: .8rem;
+}
+.link { color: var(--gold-2); font-weight: 600; }
+.link:hover { text-decoration: underline; }
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+  padding: .95rem 1.6rem; border-radius: 999px; font-weight: 700; font-size: .95rem;
+  transition: transform .2s, box-shadow .2s, background .2s, border-color .2s;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn:disabled { opacity: .5; pointer-events: none; }
+.btn--gold {
+  background: linear-gradient(135deg, var(--gold-2), var(--gold));
+  color: #1a120a; box-shadow: 0 10px 30px -10px rgba(217, 165, 74, .7);
+}
+.btn--ghost { border: 1.5px solid var(--line); background: rgba(255,255,255,.03); }
+.btn--ghost:hover { border-color: var(--gold); }
+.btn--sm { padding: .6rem 1.1rem; font-size: .88rem; }
+.btn--block { width: 100%; }
+
+/* ---------- Nav ---------- */
+.nav {
+  position: fixed; inset: 0 0 auto; z-index: 50;
+  transition: background .3s, backdrop-filter .3s, border-color .3s;
+  border-bottom: 1px solid transparent;
+}
+.nav--solid { background: rgba(20, 16, 12, .85); backdrop-filter: blur(14px); border-color: var(--line); }
+.nav__inner { display: flex; align-items: center; justify-content: space-between; height: 76px; }
+.logo { display: flex; align-items: center; gap: .7rem; }
+.logo__mark {
+  width: 42px; height: 42px; border-radius: 12px; display: grid; place-items: center;
+  font-family: var(--serif); font-size: 1.4rem; color: #1a120a;
+  background: linear-gradient(135deg, var(--gold-2), var(--ember));
+}
+.logo__text { font-family: var(--serif); font-size: 1.35rem; font-weight: 700; display: flex; flex-direction: column; line-height: 1.1; }
+.logo__text small { font-family: var(--sans); font-size: .66rem; font-weight: 500; color: var(--muted); letter-spacing: .08em; }
+.nav__links { display: flex; align-items: center; gap: 1.8rem; font-weight: 600; font-size: .95rem; }
+.nav__links a:not(.btn) { color: var(--muted); transition: color .2s; }
+.nav__links a:not(.btn):hover { color: var(--text); }
+.burger { display: none; width: 44px; height: 44px; position: relative; }
+.burger span { position: absolute; left: 10px; right: 10px; height: 2px; background: var(--text); transition: .3s; }
+.burger span:nth-child(1) { top: 15px; } .burger span:nth-child(2) { top: 21px; } .burger span:nth-child(3) { top: 27px; }
+.burger.open span:nth-child(1) { top: 21px; transform: rotate(45deg); }
+.burger.open span:nth-child(2) { opacity: 0; }
+.burger.open span:nth-child(3) { top: 21px; transform: rotate(-45deg); }
+
+/* ---------- Hero ---------- */
+.hero { position: relative; min-height: 100svh; display: flex; align-items: center; padding: 120px 0 80px; overflow: hidden; }
+.hero__bg {
+  position: absolute; inset: 0; z-index: -1;
+  background:
+    linear-gradient(90deg, rgba(20,16,12,.96) 0%, rgba(20,16,12,.75) 45%, rgba(20,16,12,.35) 100%),
+    linear-gradient(0deg, var(--bg) 0%, transparent 30%),
+    url("https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=1920&q=75") center/cover,
+    radial-gradient(circle at 70% 40%, #5a2a14, var(--bg) 70%);
+  animation: zoom 20s ease-in-out infinite alternate;
+}
+@keyframes zoom { to { transform: scale(1.08); } }
+.hero__content { max-width: 1200px; }
+.hero__title { font-size: clamp(2.8rem, 7vw, 5.6rem); max-width: 14ch; margin-bottom: 1.4rem; }
+.hero__title em { color: var(--gold-2); font-style: italic; }
+.hero__lead { max-width: 52ch; color: var(--muted); font-size: 1.1rem; margin-bottom: 2.2rem; }
+.hero__actions { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 3.5rem; }
+.hero__stats { list-style: none; display: flex; flex-wrap: wrap; gap: 2.5rem; }
+.hero__stats li { display: flex; flex-direction: column; border-left: 2px solid var(--gold); padding-left: 1rem; }
+.hero__stats strong { font-family: var(--serif); font-size: 1.4rem; }
+.hero__stats span { color: var(--muted); font-size: .88rem; }
+.hero__scroll {
+  position: absolute; bottom: 28px; left: 50%; translate: -50% 0;
+  width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line);
+  display: grid; place-items: center; animation: bob 2s infinite;
+}
+@keyframes bob { 50% { transform: translateY(8px); } }
+
+/* ---------- Sections ---------- */
+.section { padding: clamp(70px, 10vw, 120px) 0; }
+.section--dark { background: var(--bg-2); border-block: 1px solid var(--line); }
+.section__head { text-align: center; max-width: 640px; margin: 0 auto 3rem; }
+.section__head h2 { margin-bottom: .8rem; }
+
+/* ---------- Features ---------- */
+.features { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 1.2rem; }
+.feature {
+  background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 1.8rem 1.5rem; transition: transform .3s, border-color .3s;
+}
+.feature:hover { transform: translateY(-6px); border-color: rgba(217,165,74,.45); }
+.feature__icon {
+  font-size: 1.6rem; width: 56px; height: 56px; border-radius: 16px; display: grid; place-items: center;
+  background: rgba(217,165,74,.1); margin-bottom: 1.1rem;
+}
+.feature h3 { font-size: 1.2rem; margin-bottom: .5rem; }
+.feature p { color: var(--muted); font-size: .93rem; }
+
+/* ---------- Menu ---------- */
+.menu-toolbar { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; justify-content: space-between; margin-bottom: 2rem; }
+.tabs { display: flex; gap: .5rem; overflow-x: auto; padding-bottom: 4px; scrollbar-width: none; max-width: 100%; }
+.tabs::-webkit-scrollbar { display: none; }
+.tab {
+  white-space: nowrap; padding: .6rem 1.1rem; border-radius: 999px; font-weight: 600; font-size: .9rem;
+  border: 1px solid var(--line); color: var(--muted); display: flex; gap: .4rem; transition: .2s;
+}
+.tab:hover { color: var(--text); border-color: rgba(217,165,74,.4); }
+.tab.active { background: var(--gold); color: #1a120a; border-color: var(--gold); }
+.search {
+  display: flex; align-items: center; gap: .5rem; background: var(--card);
+  border: 1px solid var(--line); border-radius: 999px; padding: .2rem 1rem; min-width: 240px; flex: 0 1 300px;
+}
+.search input { background: none; border: 0; outline: 0; color: var(--text); font: inherit; padding: .55rem 0; width: 100%; }
+
+.menu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.4rem; }
+.dish {
+  background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+  overflow: hidden; cursor: pointer; display: flex; flex-direction: column;
+  transition: transform .3s, box-shadow .3s, border-color .3s;
+  animation: fadeUp .5s both;
+}
+.dish:hover { transform: translateY(-6px); box-shadow: var(--shadow); border-color: rgba(217,165,74,.4); }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } }
+.dish__img { position: relative; aspect-ratio: 4/3; overflow: hidden; background: radial-gradient(circle at 30% 30%, #4a2a16, #1d140d); }
+.dish__img img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s; }
+.dish:hover .dish__img img { transform: scale(1.08); }
+.badge {
+  position: absolute; top: 12px; left: 12px; padding: .25rem .7rem; border-radius: 999px;
+  background: var(--ember); color: #fff; font-size: .75rem; font-weight: 700; letter-spacing: .03em;
+}
+.dish__body { padding: 1.2rem 1.25rem 1.3rem; display: flex; flex-direction: column; flex: 1; }
+.dish__body h3 { font-size: 1.2rem; margin-bottom: .35rem; }
+.dish__body p { color: var(--muted); font-size: .88rem; flex: 1; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.dish__foot { display: flex; align-items: center; justify-content: space-between; margin-top: 1rem; }
+.price { font-weight: 800; color: var(--gold-2); font-size: 1.05rem; }
+.price small { font-weight: 500; color: var(--muted); font-size: .78rem; }
+.add {
+  width: 40px; height: 40px; border-radius: 50%; font-size: 1.4rem; line-height: 1;
+  background: rgba(217,165,74,.12); color: var(--gold-2); border: 1px solid rgba(217,165,74,.35); transition: .2s;
+}
+.add:hover { background: var(--gold); color: #1a120a; transform: rotate(90deg); }
+.img--missing { opacity: 0; }
+.empty { text-align: center; color: var(--muted); padding: 3rem 0; }
+.note { text-align: center; color: var(--muted); font-size: .82rem; margin-top: 2rem; }
+
+/* ---------- Halls ---------- */
+.halls { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.4rem; }
+.hall { position: relative; border-radius: var(--radius); overflow: hidden; min-height: 420px; display: flex; align-items: flex-end; background: var(--card); }
+.hall img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .7s; }
+.hall::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, rgba(20,16,12,.95) 10%, rgba(20,16,12,.2) 70%); }
+.hall:hover img { transform: scale(1.06); }
+.hall__body { position: relative; z-index: 1; padding: 1.8rem; }
+.hall__body h3 { font-size: 1.6rem; margin-bottom: .5rem; }
+.hall__body p { color: var(--muted); margin-bottom: 1rem; font-size: .95rem; }
+
+/* ---------- Gallery ---------- */
+.gallery { display: grid; grid-template-columns: repeat(3, 1fr); grid-auto-rows: 240px; gap: 1rem; }
+.gallery figure { position: relative; border-radius: 14px; overflow: hidden; background: radial-gradient(circle at 30% 30%, #4a2a16, #1d140d); }
+.gallery figure:nth-child(1) { grid-row: span 2; }
+.gallery figure:nth-child(5) { grid-column: span 2; }
+.gallery img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s; }
+.gallery figure:hover img { transform: scale(1.07); }
+.gallery figcaption {
+  position: absolute; left: 12px; bottom: 12px; padding: .3rem .8rem; border-radius: 999px;
+  background: rgba(20,16,12,.75); backdrop-filter: blur(6px); font-size: .82rem; font-weight: 600;
+}
+
+/* ---------- Booking ---------- */
+.booking { display: grid; grid-template-columns: 1fr 1.2fr; gap: 3rem; align-items: center; }
+.booking__info h2 { margin-bottom: 1rem; }
+.phones { display: flex; flex-direction: column; gap: .8rem; margin-top: 2rem; }
+.phone {
+  display: inline-flex; width: fit-content; padding: .9rem 1.3rem; border-radius: 14px;
+  background: var(--card); border: 1px solid var(--line); font-weight: 700; transition: .2s;
+}
+.phone:hover { border-color: var(--gold); color: var(--gold-2); }
+.form {
+  background: var(--card); border: 1px solid var(--line); border-radius: 24px; padding: 2rem;
+  display: flex; flex-direction: column; gap: 1rem; box-shadow: var(--shadow);
+}
+.form__row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.form label { display: flex; flex-direction: column; gap: .4rem; font-size: .85rem; font-weight: 600; color: var(--muted); }
+.form input, .form select, .form textarea {
+  font: inherit; color: var(--text); background: var(--bg); border: 1px solid var(--line);
+  border-radius: 12px; padding: .8rem 1rem; outline: none; transition: border-color .2s; color-scheme: dark;
+}
+.form input:focus, .form select:focus, .form textarea:focus { border-color: var(--gold); }
+.form textarea { resize: vertical; }
+.form__ok { background: rgba(80,160,90,.12); border: 1px solid rgba(80,160,90,.4); padding: .9rem 1rem; border-radius: 12px; font-size: .92rem; }
+.form__ok a { color: var(--gold-2); font-weight: 700; }
+
+/* ---------- Contact ---------- */
+.contact { display: grid; grid-template-columns: 1fr 1.3fr; gap: 3rem; align-items: stretch; }
+.contact__info h2 { margin-bottom: 1.8rem; }
+.info-list { list-style: none; display: flex; flex-direction: column; gap: 1.2rem; margin-bottom: 2rem; }
+.info-list li { display: flex; gap: 1rem; }
+.info-list li > span { width: 44px; height: 44px; flex: none; border-radius: 12px; background: rgba(217,165,74,.1); display: grid; place-items: center; }
+.info-list strong { display: block; font-size: .8rem; color: var(--gold); text-transform: uppercase; letter-spacing: .1em; }
+.info-list a:hover { color: var(--gold-2); }
+.socials { display: flex; gap: .8rem; flex-wrap: wrap; }
+.map { border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line); min-height: 420px; background: var(--card); }
+.map iframe { width: 100%; height: 100%; min-height: 420px; border: 0; filter: grayscale(.2) contrast(1.05); }
+
+/* ---------- Footer ---------- */
+.footer { padding: 2.5rem 0; border-top: 1px solid var(--line); }
+.footer__inner { display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; color: var(--muted); font-size: .9rem; }
+
+/* ---------- Cart ---------- */
+.cart-fab {
+  position: fixed; right: 22px; bottom: 22px; z-index: 60; width: 62px; height: 62px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold-2), var(--gold)); font-size: 1.5rem;
+  box-shadow: 0 14px 30px -8px rgba(217,165,74,.6); transition: transform .2s;
+}
+.cart-fab:hover { transform: scale(1.06); }
+.cart-fab span {
+  position: absolute; top: -4px; right: -4px; min-width: 24px; height: 24px; padding: 0 6px; border-radius: 999px;
+  background: var(--ember); color: #fff; font-size: .78rem; font-weight: 800; display: grid; place-items: center;
+  transform: scale(0); transition: transform .25s;
+}
+.cart-fab.has span { transform: scale(1); }
+.cart-fab.bump { animation: bump .4s; }
+@keyframes bump { 40% { transform: scale(1.18); } }
+.overlay { position: fixed; inset: 0; background: rgba(0,0,0,.55); z-index: 70; opacity: 0; pointer-events: none; transition: opacity .3s; }
+.overlay.show { opacity: 1; pointer-events: auto; }
+.drawer {
+  position: fixed; top: 0; right: 0; bottom: 0; width: min(420px, 100%); z-index: 80;
+  background: var(--bg-2); border-left: 1px solid var(--line); display: flex; flex-direction: column;
+  transform: translateX(100%); transition: transform .35s cubic-bezier(.2,.8,.2,1);
+}
+.drawer.open { transform: none; }
+.drawer__head { display: flex; justify-content: space-between; align-items: center; padding: 1.4rem 1.5rem; border-bottom: 1px solid var(--line); }
+.drawer__head h3 { font-size: 1.5rem; }
+.drawer__list { flex: 1; overflow-y: auto; padding: 1rem 1.5rem; display: flex; flex-direction: column; gap: .9rem; }
+.drawer__foot { padding: 1.4rem 1.5rem; border-top: 1px solid var(--line); display: flex; flex-direction: column; gap: .7rem; }
+.total { display: flex; justify-content: space-between; font-size: 1.1rem; margin-bottom: .4rem; }
+.total strong { color: var(--gold-2); }
+.icon-btn { width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--line); display: grid; place-items: center; transition: .2s; }
+.icon-btn:hover { border-color: var(--gold); }
+.cart-row { display: flex; align-items: center; gap: .9rem; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: .6rem; }
+.cart-row img { width: 58px; height: 58px; border-radius: 10px; object-fit: cover; background: #3a2414; flex: none; }
+.cart-row__info { flex: 1; display: flex; flex-direction: column; font-size: .9rem; min-width: 0; }
+.cart-row__info span { color: var(--gold-2); font-size: .85rem; }
+.qty { display: flex; align-items: center; gap: .5rem; }
+.qty button { width: 30px; height: 30px; border-radius: 50%; border: 1px solid var(--line); }
+.qty button:hover { border-color: var(--gold); }
+
+/* ---------- Modal ---------- */
+.modal {
+  position: fixed; inset: 0; z-index: 90; background: rgba(0,0,0,.7); backdrop-filter: blur(4px);
+  display: grid; place-items: center; padding: 16px; opacity: 0; pointer-events: none; transition: opacity .3s;
+}
+.modal.open { opacity: 1; pointer-events: auto; }
+.modal__card {
+  position: relative; width: min(560px, 100%); max-height: 92vh; overflow-y: auto; background: var(--bg-2);
+  border: 1px solid var(--line); border-radius: 22px; transform: translateY(20px) scale(.97); transition: transform .3s;
+}
+.modal.open .modal__card { transform: none; }
+.modal__card > img { width: 100%; aspect-ratio: 16/10; object-fit: cover; background: radial-gradient(circle at 30% 30%, #4a2a16, #1d140d); }
+.modal__close { position: absolute; top: 14px; right: 14px; background: rgba(20,16,12,.7); z-index: 1; }
+.modal__body { padding: 1.6rem; }
+.modal__body .badge { position: static; display: inline-block; margin-bottom: .7rem; }
+.modal__body h3 { font-size: 1.8rem; margin-bottom: .6rem; }
+.modal__foot { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-top: 1.5rem; flex-wrap: wrap; }
+.modal__foot strong { font-size: 1.4rem; color: var(--gold-2); }
+
+/* ---------- Toast ---------- */
+.toast {
+  position: fixed; left: 50%; bottom: 100px; z-index: 100; translate: -50% 20px; opacity: 0;
+  background: var(--text); color: var(--bg); padding: .8rem 1.3rem; border-radius: 999px; font-weight: 600;
+  font-size: .9rem; transition: .3s; pointer-events: none; max-width: calc(100% - 32px); text-align: center;
+}
+.toast.show { opacity: 1; translate: -50% 0; }
+
+/* ---------- Reveal ---------- */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s, transform .8s; }
+.reveal.in { opacity: 1; transform: none; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 920px) {
+  .burger { display: block; }
+  .nav__links {
+    position: fixed; top: 76px; left: 0; right: 0; flex-direction: column; align-items: stretch; gap: 0;
+    background: rgba(20,16,12,.97); backdrop-filter: blur(14px); border-bottom: 1px solid var(--line);
+    padding: .5rem 16px 1.2rem; transform: translateY(-120%); transition: transform .35s; z-index: -1;
+  }
+  .nav__links.open { transform: none; }
+  .nav__links a:not(.btn) { padding: .9rem 0; border-bottom: 1px solid var(--line); }
+  .nav__cta { margin-top: 1rem; }
+  .booking, .contact { grid-template-columns: 1fr; }
+  .gallery { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 180px; }
+  .gallery figure:nth-child(5) { grid-column: auto; }
+}
+@media (max-width: 560px) {
+  .form__row { grid-template-columns: 1fr; }
+  .form { padding: 1.4rem; }
+  .hero__stats { gap: 1.4rem; }
+  .search { flex: 1 1 100%; min-width: 0; }
+  .logo__text small { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .reveal { opacity: 1; transform: none; }
+}
+</style>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔥</text></svg>" />
 </head>
 <body>
@@ -268,7 +606,340 @@
 
   <div class="toast" id="toast"></div>
 
-  <script src="js/menu-data.js"></script>
-  <script src="js/main.js"></script>
+  <script>
+/*
+ * Feredun Cafe — menyu ma'lumotlari.
+ *
+ * RASMLAR: har bir taom uchun avval `images/menu/<id>.jpg` fayli qidiriladi.
+ * Restoranning haqiqiy taom rasmlarini shu nom bilan `images/menu/` papkasiga
+ * joylashtiring (masalan: images/menu/urama-shashlik.jpg) — sayt avtomatik
+ * ularni ko'rsatadi. Fayl topilmasa, `fallback` dagi onlayn rasm ishlatiladi.
+ *
+ * NARXLAR: taxminiy, restoranning amaldagi narxlari bilan almashtiring.
+ */
+
+const U = (id) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=800&q=75`;
+
+window.MENU_CATEGORIES = [
+  { id: "all", name: "Barchasi", icon: "✦" },
+  { id: "shashlik", name: "Shashliklar", icon: "🔥" },
+  { id: "hot", name: "Issiq taomlar", icon: "🍲" },
+  { id: "national", name: "Milliy taomlar", icon: "🫓" },
+  { id: "salad", name: "Salatlar", icon: "🥗" },
+  { id: "soup", name: "Sho'rvalar", icon: "🥣" },
+  { id: "dessert", name: "Shirinliklar", icon: "🍰" },
+  { id: "drinks", name: "Ichimliklar", icon: "🍹" },
+];
+
+window.MENU_ITEMS = [
+  // --- Shashliklar ---
+  { id: "urama-shashlik", cat: "shashlik", name: "Urama shashlik", desc: "Qo'y go'shti qiymasi, maxsus ziravorlar bilan ko'mirda pishirilgan. Restoranning eng mashhur taomi.", price: 28000, unit: "1 six", badge: "Xit", fallback: U("photo-1529193591184-b1d58069ecdd") },
+  { id: "qoy-shashlik", cat: "shashlik", name: "Qo'y go'shtidan shashlik", desc: "Yumshoq qo'y go'shti bo'laklari, piyoz va zira bilan.", price: 30000, unit: "1 six", fallback: U("photo-1555939594-58d7cb561ad1") },
+  { id: "mol-shashlik", cat: "shashlik", name: "Mol go'shtidan shashlik", desc: "Marinadlangan mol go'shti, olovda tayyorlangan.", price: 30000, unit: "1 six", fallback: U("photo-1603360946369-dc9bb6258143") },
+  { id: "jigar-shashlik", cat: "shashlik", name: "Jigar shashlik", desc: "Dumba bilan o'ralgan yangi jigar.", price: 25000, unit: "1 six", fallback: U("photo-1544025162-d76694265947") },
+  { id: "tovuq-shashlik", cat: "shashlik", name: "Tovuq shashlik", desc: "Tovuq soni go'shti, sarimsoqli sous bilan.", price: 22000, unit: "1 six", fallback: U("photo-1599487488170-d11ec9c172f0") },
+  { id: "assorti-shashlik", cat: "shashlik", name: "Shashlik assorti", desc: "Urama, qo'y, mol, tovuq va jigar — 4–5 kishilik katta laganda.", price: 240000, unit: "lagan", badge: "Oilaviy", fallback: U("photo-1504674900247-0877df9cc836") },
+
+  // --- Issiq taomlar ---
+  { id: "joja-tabaka", cat: "hot", name: "Jo'ja tabaka", desc: "Butun jo'ja, qarsildoq qilib qovurilgan, sarimsoqli sous va garnir bilan.", price: 75000, unit: "1 dona", badge: "Xit", fallback: U("photo-1598103442097-8b74394b95c6") },
+  { id: "barra", cat: "hot", name: "Barra", desc: "Tandirda sekin pishirilgan yosh qo'zichoq go'shti — Feredunning o'ziga xos taomi.", price: 180000, unit: "1 kg", badge: "Maxsus", fallback: U("photo-1600891964092-4316c288032e") },
+  { id: "qozon-kabob", cat: "hot", name: "Qozon kabob", desc: "Qo'y go'shti va kartoshka qozonda qovurilgan.", price: 85000, unit: "porsiya", fallback: U("photo-1544025162-d76694265947") },
+  { id: "steyk", cat: "hot", name: "Mol go'shtidan steyk", desc: "Grilda pishirilgan steyk, sabzavotlar va sous bilan.", price: 120000, unit: "porsiya", fallback: U("photo-1600891964092-4316c288032e") },
+  { id: "gril-sabzavot", cat: "hot", name: "Grilda sabzavotlar", desc: "Bulg'or qalampiri, baqlajon, pomidor va qo'ziqorin.", price: 35000, unit: "porsiya", fallback: U("photo-1540420773420-3366772f4999") },
+
+  // --- Milliy taomlar ---
+  { id: "osh", cat: "national", name: "To'y oshi", desc: "Devzira guruch, qo'y go'shti, sabzi va no'xat bilan.", price: 45000, unit: "porsiya", fallback: U("photo-1633945274405-b6c8069047b0") },
+  { id: "manti", cat: "national", name: "Manti", desc: "Qo'y go'shti va piyozli bug'da pishgan manti, qatiq bilan.", price: 35000, unit: "5 dona", fallback: U("photo-1496116218417-1a781b1c416c") },
+  { id: "somsa", cat: "national", name: "Tandir somsa", desc: "Tandirda yopilgan, go'shtli qatlamali somsa.", price: 12000, unit: "1 dona", fallback: U("photo-1601050690597-df0568f70950") },
+  { id: "lagmon", cat: "national", name: "Lag'mon", desc: "Qo'lda cho'zilgan lag'mon, go'sht va sabzavotli sous bilan.", price: 38000, unit: "porsiya", fallback: U("photo-1585032226651-759b368d7246") },
+
+  // --- Salatlar ---
+  { id: "achchiq-chuchuk", cat: "salad", name: "Achchiq-chuchuk", desc: "Pomidor, piyoz va achchiq qalampir — shashlikka eng yaxshi hamroh.", price: 15000, unit: "porsiya", fallback: U("photo-1592417817098-8fd3d9eb14a5") },
+  { id: "sezar", cat: "salad", name: "Sezar salati", desc: "Tovuq, aysberg, parmezan, krutonlar va Sezar sousi.", price: 42000, unit: "porsiya", fallback: U("photo-1550304943-4f24f54ddde9") },
+  { id: "grek", cat: "salad", name: "Grek salati", desc: "Bodring, pomidor, qalampir, zaytun va feta pishlog'i.", price: 38000, unit: "porsiya", fallback: U("photo-1540189549336-e6e99c3679fe") },
+  { id: "feredun-salat", cat: "salad", name: "Feredun salati", desc: "Mol go'shti, ko'katlar va oshpazning maxsus sousi bilan.", price: 45000, unit: "porsiya", badge: "Maxsus", fallback: U("photo-1512621776951-a57141f2eefd") },
+
+  // --- Sho'rvalar ---
+  { id: "shorva", cat: "soup", name: "Qo'y sho'rva", desc: "Qo'y go'shti, no'xat va sabzavotli tiniq sho'rva.", price: 35000, unit: "porsiya", fallback: U("photo-1547592166-23ac45744acd") },
+  { id: "mastava", cat: "soup", name: "Mastava", desc: "Guruchli quyuq sho'rva, qatiq va ko'katlar bilan.", price: 30000, unit: "porsiya", fallback: U("photo-1604152135912-04a022e23696") },
+
+  // --- Shirinliklar ---
+  { id: "chak-chak", cat: "dessert", name: "Chak-chak", desc: "Asalli milliy shirinlik.", price: 25000, unit: "porsiya", fallback: U("photo-1551024601-bec78aea704b") },
+  { id: "tort", cat: "dessert", name: "Kun torti", desc: "Har kuni yangi pishiriladigan tort bo'lagi.", price: 28000, unit: "bo'lak", fallback: U("photo-1578985545062-69928b1d9587") },
+  { id: "muzqaymoq", cat: "dessert", name: "Muzqaymoq", desc: "3 shar, meva va shokolad sousi bilan.", price: 22000, unit: "porsiya", fallback: U("photo-1497034825429-c343d7c6a68f") },
+
+  // --- Ichimliklar ---
+  { id: "kok-choy", cat: "drinks", name: "Ko'k choy", desc: "Choynakda, limon va navvot bilan.", price: 8000, unit: "choynak", fallback: U("photo-1556679343-c7306c1976bc") },
+  { id: "limonad", cat: "drinks", name: "Uy limonadi", desc: "Yalpiz, limon va rezavorlar bilan — 1 litr.", price: 35000, unit: "1 l", fallback: U("photo-1513558161293-cdaf765ed2fd") },
+  { id: "mojito", cat: "drinks", name: "Mojito (alkogolsiz)", desc: "Laym, yalpiz va gazli suv.", price: 25000, unit: "stakan", fallback: U("photo-1470337458703-46ad1756a187") },
+  { id: "kofe", cat: "drinks", name: "Kapuchino", desc: "Yangi tortilgan qahva, sut ko'pigi bilan.", price: 18000, unit: "stakan", fallback: U("photo-1509042239860-f550ce710b93") },
+];
+
+window.GALLERY = [
+  { src: "images/gallery/1.jpg", fallback: U("photo-1517248135467-4c7edcad34c4"), title: "Asosiy zal" },
+  { src: "images/gallery/2.jpg", fallback: U("photo-1519671482749-fd09be7ccebf"), title: "Banket zali" },
+  { src: "images/gallery/3.jpg", fallback: U("photo-1555396273-367ea4eb4db5"), title: "Shinam kabinalar" },
+  { src: "images/gallery/4.jpg", fallback: U("photo-1555939594-58d7cb561ad1"), title: "Mangal" },
+  { src: "images/gallery/5.jpg", fallback: U("photo-1516450360452-9312f5e86fc7"), title: "Disko bar" },
+  { src: "images/gallery/6.jpg", fallback: U("photo-1414235077428-338989a2e8c0"), title: "Dasturxon" },
+];
+
+</script>
+<script>
+(() => {
+  const $ = (s, el = document) => el.querySelector(s);
+  const $$ = (s, el = document) => [...el.querySelectorAll(s)];
+  const fmt = (n) => n.toLocaleString("ru-RU").replace(/,/g, " ") + " so'm";
+  const PHONE = "+998 (99) 034-95-95";
+
+  /* ---------- Rasm: avval mahalliy fayl, keyin onlayn, keyin gradient ---------- */
+  function smartImg(img, local, fallback) {
+    img.dataset.stage = "local";
+    img.onerror = () => {
+      if (img.dataset.stage === "local" && fallback) {
+        img.dataset.stage = "remote";
+        img.src = fallback;
+      } else {
+        img.onerror = null;
+        img.classList.add("img--missing");
+        img.removeAttribute("src");
+      }
+    };
+    img.src = local;
+  }
+
+  /* ---------- Navbar ---------- */
+  const nav = $("#nav");
+  const onScroll = () => nav.classList.toggle("nav--solid", scrollY > 40);
+  addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  const burger = $("#burger");
+  const links = $("#navLinks");
+  burger.addEventListener("click", () => {
+    burger.classList.toggle("open");
+    links.classList.toggle("open");
+  });
+  $$("#navLinks a").forEach((a) =>
+    a.addEventListener("click", () => {
+      burger.classList.remove("open");
+      links.classList.remove("open");
+    })
+  );
+
+  /* ---------- Menyu ---------- */
+  const tabsEl = $("#tabs");
+  const grid = $("#menuGrid");
+  const emptyEl = $("#menuEmpty");
+  let activeCat = "all";
+  let query = "";
+
+  MENU_CATEGORIES.forEach((c) => {
+    const b = document.createElement("button");
+    b.className = "tab" + (c.id === activeCat ? " active" : "");
+    b.innerHTML = `<span>${c.icon}</span>${c.name}`;
+    b.setAttribute("role", "tab");
+    b.addEventListener("click", () => {
+      activeCat = c.id;
+      $$(".tab", tabsEl).forEach((t) => t.classList.remove("active"));
+      b.classList.add("active");
+      renderMenu();
+    });
+    tabsEl.appendChild(b);
+  });
+
+  $("#search").addEventListener("input", (e) => {
+    query = e.target.value.trim().toLowerCase();
+    renderMenu();
+  });
+
+  function renderMenu() {
+    const items = MENU_ITEMS.filter(
+      (i) =>
+        (activeCat === "all" || i.cat === activeCat) &&
+        (!query || (i.name + " " + i.desc).toLowerCase().includes(query))
+    );
+    grid.innerHTML = "";
+    emptyEl.hidden = items.length > 0;
+    items.forEach((item, idx) => {
+      const card = document.createElement("article");
+      card.className = "dish";
+      card.style.animationDelay = `${Math.min(idx, 12) * 40}ms`;
+      card.innerHTML = `
+        <div class="dish__img">
+          <img loading="lazy" alt="${item.name}" />
+          ${item.badge ? `<span class="badge">${item.badge}</span>` : ""}
+        </div>
+        <div class="dish__body">
+          <h3>${item.name}</h3>
+          <p>${item.desc}</p>
+          <div class="dish__foot">
+            <span class="price">${fmt(item.price)}<small> / ${item.unit}</small></span>
+            <button class="add" aria-label="Savatchaga qo'shish">+</button>
+          </div>
+        </div>`;
+      smartImg($("img", card), `images/menu/${item.id}.jpg`, item.fallback);
+      $(".add", card).addEventListener("click", (e) => {
+        e.stopPropagation();
+        addToCart(item.id);
+      });
+      card.addEventListener("click", () => openModal(item));
+      grid.appendChild(card);
+    });
+  }
+  renderMenu();
+
+  /* ---------- Modal ---------- */
+  const modal = $("#modal");
+  let modalItem = null;
+  function openModal(item) {
+    modalItem = item;
+    smartImg($("#modalImg"), `images/menu/${item.id}.jpg`, item.fallback);
+    $("#modalImg").alt = item.name;
+    $("#modalTitle").textContent = item.name;
+    $("#modalDesc").textContent = item.desc;
+    $("#modalPrice").textContent = fmt(item.price);
+    $("#modalUnit").textContent = "/ " + item.unit;
+    const badge = $("#modalBadge");
+    badge.textContent = item.badge || "";
+    badge.hidden = !item.badge;
+    modal.classList.add("open");
+    modal.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+  }
+  function closeModal() {
+    modal.classList.remove("open");
+    modal.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+  }
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal || e.target.closest("[data-close-modal]")) closeModal();
+  });
+  $("#modalAdd").addEventListener("click", () => {
+    if (modalItem) addToCart(modalItem.id);
+    closeModal();
+  });
+
+  /* ---------- Savatcha ---------- */
+  let cart = {};
+  try { cart = JSON.parse(localStorage.getItem("feredun-cart")) || {}; } catch (_) {}
+  const save = () => { try { localStorage.setItem("feredun-cart", JSON.stringify(cart)); } catch (_) {} };
+  const byId = (id) => MENU_ITEMS.find((i) => i.id === id);
+
+  function addToCart(id) {
+    cart[id] = (cart[id] || 0) + 1;
+    save();
+    renderCart();
+    toast(`${byId(id).name} savatchaga qo'shildi`);
+    const fab = $("#cartFab");
+    fab.classList.remove("bump");
+    void fab.offsetWidth;
+    fab.classList.add("bump");
+  }
+  function changeQty(id, d) {
+    cart[id] = (cart[id] || 0) + d;
+    if (cart[id] <= 0) delete cart[id];
+    save();
+    renderCart();
+  }
+  function cartText() {
+    const lines = Object.entries(cart).map(([id, q]) => {
+      const it = byId(id);
+      return `• ${it.name} × ${q} = ${fmt(it.price * q)}`;
+    });
+    return `Feredun Cafe — buyurtma:\n${lines.join("\n")}\nJami: ${$("#cartTotal").textContent}`;
+  }
+  function renderCart() {
+    const list = $("#cartList");
+    const entries = Object.entries(cart).filter(([id]) => byId(id));
+    let total = 0, count = 0;
+    list.innerHTML = entries.length ? "" : `<p class="muted center">Savatcha bo'sh</p>`;
+    entries.forEach(([id, q]) => {
+      const it = byId(id);
+      total += it.price * q;
+      count += q;
+      const row = document.createElement("div");
+      row.className = "cart-row";
+      row.innerHTML = `
+        <img alt="" />
+        <div class="cart-row__info"><strong>${it.name}</strong><span>${fmt(it.price)}</span></div>
+        <div class="qty"><button data-d="-1">−</button><span>${q}</span><button data-d="1">+</button></div>`;
+      smartImg($("img", row), `images/menu/${it.id}.jpg`, it.fallback);
+      $$(".qty button", row).forEach((b) => b.addEventListener("click", () => changeQty(id, +b.dataset.d)));
+      list.appendChild(row);
+    });
+    $("#cartTotal").textContent = fmt(total);
+    $("#cartCount").textContent = count;
+    $("#cartFab").classList.toggle("has", count > 0);
+    $("#orderBtn").disabled = count === 0;
+  }
+  renderCart();
+
+  $("#orderBtn").addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(cartText());
+      toast(`Buyurtma nusxalandi. Endi ${PHONE} raqamiga yuboring yoki qo'ng'iroq qiling.`, 5000);
+    } catch (_) {
+      alert(cartText());
+    }
+  });
+
+  const drawer = $("#drawer");
+  const overlay = $("#overlay");
+  const openDrawer = () => { drawer.classList.add("open"); overlay.classList.add("show"); drawer.setAttribute("aria-hidden", "false"); };
+  const closeDrawer = () => { drawer.classList.remove("open"); overlay.classList.remove("show"); drawer.setAttribute("aria-hidden", "true"); };
+  $("#cartFab").addEventListener("click", openDrawer);
+  overlay.addEventListener("click", closeDrawer);
+  $("[data-close-drawer]").addEventListener("click", closeDrawer);
+  addEventListener("keydown", (e) => { if (e.key === "Escape") { closeDrawer(); closeModal(); } });
+
+  /* ---------- Galereya ---------- */
+  const gal = $("#gallery-grid");
+  GALLERY.forEach((g) => {
+    const fig = document.createElement("figure");
+    fig.innerHTML = `<img loading="lazy" alt="${g.title}" /><figcaption>${g.title}</figcaption>`;
+    smartImg($("img", fig), g.src, g.fallback);
+    gal.appendChild(fig);
+  });
+
+  /* ---------- Bron formasi ---------- */
+  const form = $("#bookingForm");
+  form.date.min = new Date().toISOString().slice(0, 10);
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const d = Object.fromEntries(new FormData(form));
+    const text =
+      `Feredun Cafe — joy band qilish\n` +
+      `Ism: ${d.name}\nTelefon: ${d.phone}\nSana: ${d.date}, ${d.time}\n` +
+      `Mehmonlar: ${d.guests}\nJoy: ${d.place}` + (d.note ? `\nIzoh: ${d.note}` : "");
+    let copied = false;
+    try { await navigator.clipboard.writeText(text); copied = true; } catch (_) {}
+    const ok = $("#formOk");
+    ok.hidden = false;
+    ok.innerHTML =
+      `✅ Bron matni tayyor${copied ? " va nusxalandi" : ""}. Tasdiqlash uchun qo'ng'iroq qiling: ` +
+      `<a href="tel:+998990349595">${PHONE}</a>`;
+  });
+
+  /* ---------- Toast ---------- */
+  let tId;
+  function toast(msg, ms = 2200) {
+    const t = $("#toast");
+    t.textContent = msg;
+    t.classList.add("show");
+    clearTimeout(tId);
+    tId = setTimeout(() => t.classList.remove("show"), ms);
+  }
+
+  /* ---------- Reveal animatsiyasi ---------- */
+  const io = new IntersectionObserver(
+    (ents) => ents.forEach((en) => { if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); } }),
+    { threshold: 0.12 }
+  );
+  $$(".reveal").forEach((el) => io.observe(el));
+
+  $("#year").textContent = new Date().getFullYear();
+})();
+</script>
 </body>
 </html>
