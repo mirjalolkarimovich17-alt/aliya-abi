@@ -5,630 +5,537 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Feredun Cafe — Sharqona oilaviy restoran, Termiz</title>
   <meta name="description" content="Feredun Cafe — Termiz shahridagi sharqona oilaviy restoran. Shashliklar, jo'ja tabaka, barra, banket zali, karaoke va disko bar. Har kuni 10:00–23:00." />
-  <meta name="theme-color" content="#14100c" />
+  <meta name="theme-color" content="#faf8f5" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <style>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231c1a17'/><text x='16' y='22' font-family='Georgia' font-size='18' fill='%23faf8f5' text-anchor='middle'>F</text></svg>" />
+<style>
 :root {
-  --bg: #14100c;
-  --bg-2: #1c1611;
-  --card: #241c15;
-  --line: rgba(232, 196, 128, 0.14);
-  --text: #f4ece0;
-  --muted: #b5a690;
-  --gold: #d9a54a;
-  --gold-2: #f0c36d;
-  --ember: #c4502b;
-  --radius: 18px;
-  --shadow: 0 20px 50px -20px rgba(0, 0, 0, 0.7);
-  --serif: "Playfair Display", Georgia, serif;
-  --sans: "Manrope", system-ui, -apple-system, sans-serif;
+  --bg: #faf8f5;
+  --surface: #ffffff;
+  --soft: #f2eee8;
+  --line: #e6e0d7;
+  --text: #1c1a17;
+  --muted: #7a736a;
+  --accent: #9a5b32;
+  --radius: 4px;
+  --serif: "Cormorant Garamond", Georgia, serif;
+  --sans: "Inter", system-ui, -apple-system, sans-serif;
 }
-
 * { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; scroll-padding-top: 80px; }
-body {
-  font-family: var(--sans);
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
-}
+html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+body { font-family: var(--sans); font-weight: 400; background: var(--bg); color: var(--text); line-height: 1.65; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
 img { display: block; max-width: 100%; }
 a { color: inherit; text-decoration: none; }
 button { font: inherit; cursor: pointer; border: 0; background: none; color: inherit; }
-h1, h2, h3 { font-family: var(--serif); line-height: 1.15; font-weight: 700; }
-h2 { font-size: clamp(2rem, 4vw, 3rem); }
-.container { width: min(1200px, 100% - 32px); margin-inline: auto; }
+h1, h2, h3 { font-family: var(--serif); font-weight: 500; line-height: 1.1; letter-spacing: -.01em; }
+h2 { font-size: clamp(2.2rem, 4.5vw, 3.4rem); }
+.container { width: min(1180px, 100% - 32px); margin-inline: auto; }
 .muted { color: var(--muted); }
-.center { text-align: center; padding: 2rem 0; }
-.eyebrow {
-  text-transform: uppercase; letter-spacing: .22em; font-size: .78rem;
-  color: var(--gold); font-weight: 700; margin-bottom: .8rem;
-}
-.link { color: var(--gold-2); font-weight: 600; }
-.link:hover { text-decoration: underline; }
+.center { text-align: center; padding: 2.5rem 0; }
 
-/* ---------- Buttons ---------- */
-.btn {
-  display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
-  padding: .95rem 1.6rem; border-radius: 999px; font-weight: 700; font-size: .95rem;
-  transition: transform .2s, box-shadow .2s, background .2s, border-color .2s;
-}
-.btn:hover { transform: translateY(-2px); }
-.btn:disabled { opacity: .5; pointer-events: none; }
-.btn--gold {
-  background: linear-gradient(135deg, var(--gold-2), var(--gold));
-  color: #1a120a; box-shadow: 0 10px 30px -10px rgba(217, 165, 74, .7);
-}
-.btn--ghost { border: 1.5px solid var(--line); background: rgba(255,255,255,.03); }
-.btn--ghost:hover { border-color: var(--gold); }
-.btn--sm { padding: .6rem 1.1rem; font-size: .88rem; }
+/* Icons */
+.i { width: 20px; height: 20px; flex: none; stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.i--sm { width: 16px; height: 16px; }
+.i--lg { width: 26px; height: 26px; stroke-width: 1.25; }
+
+.eyebrow { font-size: .72rem; letter-spacing: .28em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.2rem; display: flex; align-items: center; gap: .8rem; }
+.eyebrow::before { content: ""; width: 28px; height: 1px; background: currentColor; }
+.section__head--center .eyebrow { justify-content: center; }
+.link { display: inline-flex; align-items: center; gap: .4rem; font-size: .88rem; font-weight: 500; border-bottom: 1px solid currentColor; padding-bottom: 2px; }
+.link .i { transition: transform .25s; }
+.link:hover .i { transform: translateX(4px); }
+
+/* Buttons */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: .6rem; padding: .95rem 1.7rem; font-size: .85rem; font-weight: 500; letter-spacing: .06em; text-transform: uppercase; border-radius: var(--radius); transition: background .25s, color .25s, border-color .25s; }
+.btn--dark { background: var(--text); color: var(--bg); }
+.btn--dark:hover { background: var(--accent); }
+.btn--line { border: 1px solid var(--text); }
+.btn--line:hover { background: var(--text); color: var(--bg); }
+.btn--light { border: 1px solid rgba(255,255,255,.6); color: #fff; }
+.btn--light:hover { background: #fff; color: var(--text); }
+.btn--sm { padding: .65rem 1.1rem; font-size: .75rem; }
 .btn--block { width: 100%; }
+.btn:disabled { opacity: .4; pointer-events: none; }
 
-/* ---------- Nav ---------- */
-.nav {
-  position: fixed; inset: 0 0 auto; z-index: 50;
-  transition: background .3s, backdrop-filter .3s, border-color .3s;
-  border-bottom: 1px solid transparent;
-}
-.nav--solid { background: rgba(20, 16, 12, .85); backdrop-filter: blur(14px); border-color: var(--line); }
-.nav__inner { display: flex; align-items: center; justify-content: space-between; height: 76px; }
-.logo { display: flex; align-items: center; gap: .7rem; }
-.logo__mark {
-  width: 42px; height: 42px; border-radius: 12px; display: grid; place-items: center;
-  font-family: var(--serif); font-size: 1.4rem; color: #1a120a;
-  background: linear-gradient(135deg, var(--gold-2), var(--ember));
-}
-.logo__text { font-family: var(--serif); font-size: 1.35rem; font-weight: 700; display: flex; flex-direction: column; line-height: 1.1; }
-.logo__text small { font-family: var(--sans); font-size: .66rem; font-weight: 500; color: var(--muted); letter-spacing: .08em; }
-.nav__links { display: flex; align-items: center; gap: 1.8rem; font-weight: 600; font-size: .95rem; }
-.nav__links a:not(.btn) { color: var(--muted); transition: color .2s; }
-.nav__links a:not(.btn):hover { color: var(--text); }
-.burger { display: none; width: 44px; height: 44px; position: relative; }
-.burger span { position: absolute; left: 10px; right: 10px; height: 2px; background: var(--text); transition: .3s; }
-.burger span:nth-child(1) { top: 15px; } .burger span:nth-child(2) { top: 21px; } .burger span:nth-child(3) { top: 27px; }
-.burger.open span:nth-child(1) { top: 21px; transform: rotate(45deg); }
-.burger.open span:nth-child(2) { opacity: 0; }
-.burger.open span:nth-child(3) { top: 21px; transform: rotate(-45deg); }
+/* Nav */
+.nav { position: fixed; inset: 0 0 auto; z-index: 50; transition: background .3s, border-color .3s, color .3s; border-bottom: 1px solid transparent; color: #fff; }
+.nav--solid { background: rgba(250,248,245,.92); backdrop-filter: blur(12px); border-color: var(--line); color: var(--text); }
+.nav__inner { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+.logo { display: flex; flex-direction: column; line-height: 1; }
+.logo b { font-family: var(--serif); font-weight: 600; font-size: 1.6rem; letter-spacing: .02em; }
+.logo small { font-size: .6rem; letter-spacing: .3em; text-transform: uppercase; opacity: .7; margin-top: 4px; }
+.nav__links { display: flex; align-items: center; gap: 2.2rem; font-size: .85rem; }
+.nav__links a:not(.btn) { opacity: .8; transition: opacity .2s; }
+.nav__links a:not(.btn):hover { opacity: 1; }
+.nav .nav__cta { border: 1px solid currentColor; }
+.nav--solid .nav__cta:hover { background: var(--text); color: var(--bg); }
+.burger { display: none; width: 40px; height: 40px; }
 
-/* ---------- Hero ---------- */
-.hero { position: relative; min-height: 100svh; display: flex; align-items: center; padding: 120px 0 80px; overflow: hidden; }
-.hero__bg {
-  position: absolute; inset: 0; z-index: -1;
-  background:
-    linear-gradient(90deg, rgba(20,16,12,.96) 0%, rgba(20,16,12,.75) 45%, rgba(20,16,12,.35) 100%),
-    linear-gradient(0deg, var(--bg) 0%, transparent 30%),
-    url("https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=1920&q=75") center/cover,
-    radial-gradient(circle at 70% 40%, #5a2a14, var(--bg) 70%);
-  animation: zoom 20s ease-in-out infinite alternate;
-}
-@keyframes zoom { to { transform: scale(1.08); } }
-.hero__content { max-width: 1200px; }
-.hero__title { font-size: clamp(2.8rem, 7vw, 5.6rem); max-width: 14ch; margin-bottom: 1.4rem; }
-.hero__title em { color: var(--gold-2); font-style: italic; }
-.hero__lead { max-width: 52ch; color: var(--muted); font-size: 1.1rem; margin-bottom: 2.2rem; }
-.hero__actions { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 3.5rem; }
-.hero__stats { list-style: none; display: flex; flex-wrap: wrap; gap: 2.5rem; }
-.hero__stats li { display: flex; flex-direction: column; border-left: 2px solid var(--gold); padding-left: 1rem; }
-.hero__stats strong { font-family: var(--serif); font-size: 1.4rem; }
-.hero__stats span { color: var(--muted); font-size: .88rem; }
-.hero__scroll {
-  position: absolute; bottom: 28px; left: 50%; translate: -50% 0;
-  width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line);
-  display: grid; place-items: center; animation: bob 2s infinite;
-}
-@keyframes bob { 50% { transform: translateY(8px); } }
+/* Hero */
+.hero { position: relative; min-height: 100svh; display: flex; align-items: flex-end; padding: 140px 0 72px; color: #fff; overflow: hidden; background: #2a2420; }
+.hero__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,.35) 0%, rgba(0,0,0,.15) 40%, rgba(0,0,0,.65) 100%); }
+.hero__content { position: relative; z-index: 1; }
+.hero .eyebrow { color: rgba(255,255,255,.8); }
+.hero__title { font-size: clamp(3rem, 8vw, 6.5rem); max-width: 12ch; margin-bottom: 1.5rem; }
+.hero__lead { max-width: 46ch; font-weight: 300; font-size: 1.05rem; opacity: .9; margin-bottom: 2.5rem; }
+.hero__actions { display: flex; flex-wrap: wrap; gap: .8rem; }
+.hero .btn--dark { background: #fff; color: var(--text); }
+.hero .btn--dark:hover { background: var(--accent); color: #fff; }
+.hero__meta { position: relative; z-index: 1; display: flex; flex-wrap: wrap; gap: 2.5rem; margin-top: 4rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,.25); font-size: .85rem; }
+.hero__meta span { display: flex; align-items: center; gap: .6rem; opacity: .9; }
 
-/* ---------- Sections ---------- */
-.section { padding: clamp(70px, 10vw, 120px) 0; }
-.section--dark { background: var(--bg-2); border-block: 1px solid var(--line); }
-.section__head { text-align: center; max-width: 640px; margin: 0 auto 3rem; }
-.section__head h2 { margin-bottom: .8rem; }
+/* Sections */
+.section { padding: clamp(80px, 11vw, 140px) 0; }
+.section--soft { background: var(--soft); }
+.section__head { max-width: 620px; margin-bottom: 3.5rem; }
+.section__head--center { text-align: center; margin-inline: auto; }
+.section__head h2 { margin-bottom: 1rem; }
 
-/* ---------- Features ---------- */
-.features { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 1.2rem; }
-.feature {
-  background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
-  padding: 1.8rem 1.5rem; transition: transform .3s, border-color .3s;
-}
-.feature:hover { transform: translateY(-6px); border-color: rgba(217,165,74,.45); }
-.feature__icon {
-  font-size: 1.6rem; width: 56px; height: 56px; border-radius: 16px; display: grid; place-items: center;
-  background: rgba(217,165,74,.1); margin-bottom: 1.1rem;
-}
-.feature h3 { font-size: 1.2rem; margin-bottom: .5rem; }
-.feature p { color: var(--muted); font-size: .93rem; }
+/* About */
+.about { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 6vw, 6rem); align-items: center; }
+.about__img { aspect-ratio: 4/5; object-fit: cover; width: 100%; background: var(--soft); }
+.about__text p { color: var(--muted); margin-bottom: 1rem; max-width: 48ch; }
+.features { display: grid; grid-template-columns: repeat(5, 1fr); border-top: 1px solid var(--line); margin-top: clamp(4rem, 8vw, 6rem); }
+.feature { padding: 2rem 1.5rem 0 0; }
+.feature + .feature { padding-left: 1.5rem; border-left: 1px solid var(--line); }
+.feature .i { color: var(--accent); margin-bottom: 1.2rem; }
+.feature h3 { font-size: 1.3rem; margin-bottom: .4rem; }
+.feature p { color: var(--muted); font-size: .85rem; }
 
-/* ---------- Menu ---------- */
-.menu-toolbar { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; justify-content: space-between; margin-bottom: 2rem; }
-.tabs { display: flex; gap: .5rem; overflow-x: auto; padding-bottom: 4px; scrollbar-width: none; max-width: 100%; }
+/* Menu */
+.menu-toolbar { display: flex; flex-wrap: wrap; gap: 1.5rem; align-items: center; justify-content: space-between; margin-bottom: 3rem; border-bottom: 1px solid var(--line); }
+.tabs { display: flex; gap: 2rem; overflow-x: auto; scrollbar-width: none; max-width: 100%; }
 .tabs::-webkit-scrollbar { display: none; }
-.tab {
-  white-space: nowrap; padding: .6rem 1.1rem; border-radius: 999px; font-weight: 600; font-size: .9rem;
-  border: 1px solid var(--line); color: var(--muted); display: flex; gap: .4rem; transition: .2s;
-}
-.tab:hover { color: var(--text); border-color: rgba(217,165,74,.4); }
-.tab.active { background: var(--gold); color: #1a120a; border-color: var(--gold); }
-.search {
-  display: flex; align-items: center; gap: .5rem; background: var(--card);
-  border: 1px solid var(--line); border-radius: 999px; padding: .2rem 1rem; min-width: 240px; flex: 0 1 300px;
-}
-.search input { background: none; border: 0; outline: 0; color: var(--text); font: inherit; padding: .55rem 0; width: 100%; }
-
-.menu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.4rem; }
-.dish {
-  background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
-  overflow: hidden; cursor: pointer; display: flex; flex-direction: column;
-  transition: transform .3s, box-shadow .3s, border-color .3s;
-  animation: fadeUp .5s both;
-}
-.dish:hover { transform: translateY(-6px); box-shadow: var(--shadow); border-color: rgba(217,165,74,.4); }
-@keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } }
-.dish__img { position: relative; aspect-ratio: 4/3; overflow: hidden; background: radial-gradient(circle at 30% 30%, #4a2a16, #1d140d); }
-.dish__img img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s; }
-.dish:hover .dish__img img { transform: scale(1.08); }
-.badge {
-  position: absolute; top: 12px; left: 12px; padding: .25rem .7rem; border-radius: 999px;
-  background: var(--ember); color: #fff; font-size: .75rem; font-weight: 700; letter-spacing: .03em;
-}
-.dish__body { padding: 1.2rem 1.25rem 1.3rem; display: flex; flex-direction: column; flex: 1; }
-.dish__body h3 { font-size: 1.2rem; margin-bottom: .35rem; }
-.dish__body p { color: var(--muted); font-size: .88rem; flex: 1; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-.dish__foot { display: flex; align-items: center; justify-content: space-between; margin-top: 1rem; }
-.price { font-weight: 800; color: var(--gold-2); font-size: 1.05rem; }
-.price small { font-weight: 500; color: var(--muted); font-size: .78rem; }
-.add {
-  width: 40px; height: 40px; border-radius: 50%; font-size: 1.4rem; line-height: 1;
-  background: rgba(217,165,74,.12); color: var(--gold-2); border: 1px solid rgba(217,165,74,.35); transition: .2s;
-}
-.add:hover { background: var(--gold); color: #1a120a; transform: rotate(90deg); }
+.tab { white-space: nowrap; padding: 1rem 0; font-size: .85rem; color: var(--muted); display: flex; align-items: center; gap: .5rem; border-bottom: 1px solid transparent; margin-bottom: -1px; transition: color .2s, border-color .2s; }
+.tab:hover { color: var(--text); }
+.tab.active { color: var(--text); border-color: var(--text); }
+.search { display: flex; align-items: center; gap: .6rem; color: var(--muted); padding: .6rem 0; min-width: 220px; }
+.search input { background: none; border: 0; outline: 0; color: var(--text); font: inherit; font-size: .9rem; width: 100%; }
+.menu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 3rem 1.8rem; }
+.dish { cursor: pointer; display: flex; flex-direction: column; animation: fade .5s both; }
+@keyframes fade { from { opacity: 0; transform: translateY(10px); } }
+.dish__img { position: relative; aspect-ratio: 1/1; overflow: hidden; background: var(--soft); margin-bottom: 1.1rem; }
+.dish__img img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s cubic-bezier(.2,.7,.2,1); }
+.dish:hover .dish__img img { transform: scale(1.05); }
+.badge { position: absolute; top: 12px; left: 12px; padding: .3rem .6rem; background: var(--bg); color: var(--text); font-size: .65rem; letter-spacing: .15em; text-transform: uppercase; }
+.dish__row { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; }
+.dish h3 { font-size: 1.4rem; }
+.price { font-size: .9rem; white-space: nowrap; }
+.dish p { color: var(--muted); font-size: .85rem; margin: .3rem 0 .9rem; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.dish__foot { display: flex; justify-content: space-between; align-items: center; margin-top: auto; }
+.unit { font-size: .75rem; color: var(--muted); letter-spacing: .05em; }
+.add { display: inline-flex; align-items: center; gap: .4rem; font-size: .75rem; letter-spacing: .08em; text-transform: uppercase; padding: .45rem .8rem; border: 1px solid var(--line); border-radius: var(--radius); transition: .2s; }
+.add:hover { background: var(--text); color: var(--bg); border-color: var(--text); }
 .img--missing { opacity: 0; }
 .empty { text-align: center; color: var(--muted); padding: 3rem 0; }
-.note { text-align: center; color: var(--muted); font-size: .82rem; margin-top: 2rem; }
+.note { text-align: center; color: var(--muted); font-size: .78rem; margin-top: 3.5rem; }
 
-/* ---------- Halls ---------- */
-.halls { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.4rem; }
-.hall { position: relative; border-radius: var(--radius); overflow: hidden; min-height: 420px; display: flex; align-items: flex-end; background: var(--card); }
-.hall img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .7s; }
-.hall::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, rgba(20,16,12,.95) 10%, rgba(20,16,12,.2) 70%); }
-.hall:hover img { transform: scale(1.06); }
-.hall__body { position: relative; z-index: 1; padding: 1.8rem; }
-.hall__body h3 { font-size: 1.6rem; margin-bottom: .5rem; }
-.hall__body p { color: var(--muted); margin-bottom: 1rem; font-size: .95rem; }
+/* Halls */
+.halls { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.8rem; }
+.hall__img { aspect-ratio: 3/4; overflow: hidden; background: var(--soft); margin-bottom: 1.4rem; }
+.hall__img img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s cubic-bezier(.2,.7,.2,1); }
+.hall:hover .hall__img img { transform: scale(1.04); }
+.hall__num { font-size: .75rem; color: var(--muted); letter-spacing: .2em; }
+.hall h3 { font-size: 1.8rem; margin: .3rem 0 .6rem; }
+.hall p { color: var(--muted); font-size: .9rem; margin-bottom: 1.2rem; }
 
-/* ---------- Gallery ---------- */
-.gallery { display: grid; grid-template-columns: repeat(3, 1fr); grid-auto-rows: 240px; gap: 1rem; }
-.gallery figure { position: relative; border-radius: 14px; overflow: hidden; background: radial-gradient(circle at 30% 30%, #4a2a16, #1d140d); }
-.gallery figure:nth-child(1) { grid-row: span 2; }
-.gallery figure:nth-child(5) { grid-column: span 2; }
-.gallery img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s; }
-.gallery figure:hover img { transform: scale(1.07); }
-.gallery figcaption {
-  position: absolute; left: 12px; bottom: 12px; padding: .3rem .8rem; border-radius: 999px;
-  background: rgba(20,16,12,.75); backdrop-filter: blur(6px); font-size: .82rem; font-weight: 600;
-}
+/* Gallery */
+.gallery { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 240px; gap: .8rem; }
+.gallery figure { position: relative; overflow: hidden; background: var(--line); }
+.gallery figure:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+.gallery figure:nth-child(6) { grid-column: span 2; }
+.gallery img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s cubic-bezier(.2,.7,.2,1); }
+.gallery figure:hover img { transform: scale(1.04); }
+.gallery figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 2rem 1rem .8rem; color: #fff; font-size: .8rem; letter-spacing: .05em; background: linear-gradient(transparent, rgba(0,0,0,.5)); opacity: 0; transition: opacity .3s; }
+.gallery figure:hover figcaption { opacity: 1; }
 
-/* ---------- Booking ---------- */
-.booking { display: grid; grid-template-columns: 1fr 1.2fr; gap: 3rem; align-items: center; }
-.booking__info h2 { margin-bottom: 1rem; }
-.phones { display: flex; flex-direction: column; gap: .8rem; margin-top: 2rem; }
-.phone {
-  display: inline-flex; width: fit-content; padding: .9rem 1.3rem; border-radius: 14px;
-  background: var(--card); border: 1px solid var(--line); font-weight: 700; transition: .2s;
-}
-.phone:hover { border-color: var(--gold); color: var(--gold-2); }
-.form {
-  background: var(--card); border: 1px solid var(--line); border-radius: 24px; padding: 2rem;
-  display: flex; flex-direction: column; gap: 1rem; box-shadow: var(--shadow);
-}
-.form__row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-.form label { display: flex; flex-direction: column; gap: .4rem; font-size: .85rem; font-weight: 600; color: var(--muted); }
-.form input, .form select, .form textarea {
-  font: inherit; color: var(--text); background: var(--bg); border: 1px solid var(--line);
-  border-radius: 12px; padding: .8rem 1rem; outline: none; transition: border-color .2s; color-scheme: dark;
-}
-.form input:focus, .form select:focus, .form textarea:focus { border-color: var(--gold); }
+/* Booking */
+.booking { display: grid; grid-template-columns: 1fr 1.2fr; gap: clamp(2rem, 6vw, 6rem); }
+.phones { display: flex; flex-direction: column; margin-top: 2.5rem; border-top: 1px solid var(--line); }
+.phone { display: flex; align-items: center; justify-content: space-between; padding: 1.1rem 0; border-bottom: 1px solid var(--line); font-size: 1.05rem; transition: color .2s; }
+.phone:hover { color: var(--accent); }
+.phone span { display: flex; align-items: center; gap: .8rem; }
+.form { display: flex; flex-direction: column; gap: 1.6rem; }
+.form__row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.6rem; }
+.form label { display: flex; flex-direction: column; gap: .3rem; font-size: .7rem; letter-spacing: .15em; text-transform: uppercase; color: var(--muted); }
+.form input, .form select, .form textarea { font: inherit; font-size: 1rem; letter-spacing: 0; text-transform: none; color: var(--text); background: transparent; border: 0; border-bottom: 1px solid var(--line); border-radius: 0; padding: .6rem 0; outline: none; transition: border-color .2s; }
+.form input:focus, .form select:focus, .form textarea:focus { border-color: var(--text); }
 .form textarea { resize: vertical; }
-.form__ok { background: rgba(80,160,90,.12); border: 1px solid rgba(80,160,90,.4); padding: .9rem 1rem; border-radius: 12px; font-size: .92rem; }
-.form__ok a { color: var(--gold-2); font-weight: 700; }
+.form__ok { display: flex; gap: .7rem; align-items: flex-start; background: var(--soft); padding: 1rem 1.2rem; font-size: .9rem; }
+.form__ok .i { color: #3f7a4a; margin-top: 2px; }
+.form__ok a { font-weight: 600; border-bottom: 1px solid; }
 
-/* ---------- Contact ---------- */
-.contact { display: grid; grid-template-columns: 1fr 1.3fr; gap: 3rem; align-items: stretch; }
-.contact__info h2 { margin-bottom: 1.8rem; }
-.info-list { list-style: none; display: flex; flex-direction: column; gap: 1.2rem; margin-bottom: 2rem; }
-.info-list li { display: flex; gap: 1rem; }
-.info-list li > span { width: 44px; height: 44px; flex: none; border-radius: 12px; background: rgba(217,165,74,.1); display: grid; place-items: center; }
-.info-list strong { display: block; font-size: .8rem; color: var(--gold); text-transform: uppercase; letter-spacing: .1em; }
-.info-list a:hover { color: var(--gold-2); }
+/* Contact */
+.contact { display: grid; grid-template-columns: 1fr 1.3fr; gap: clamp(2rem, 6vw, 5rem); }
+.info-list { list-style: none; margin: 2rem 0 2.5rem; border-top: 1px solid var(--line); }
+.info-list li { display: flex; gap: 1.2rem; padding: 1.2rem 0; border-bottom: 1px solid var(--line); }
+.info-list .i { color: var(--accent); margin-top: 3px; }
+.info-list strong { display: block; font-size: .7rem; font-weight: 500; letter-spacing: .15em; text-transform: uppercase; color: var(--muted); margin-bottom: .2rem; }
+.info-list a:hover { color: var(--accent); }
 .socials { display: flex; gap: .8rem; flex-wrap: wrap; }
-.map { border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line); min-height: 420px; background: var(--card); }
-.map iframe { width: 100%; height: 100%; min-height: 420px; border: 0; filter: grayscale(.2) contrast(1.05); }
+.map { min-height: 460px; background: var(--soft); }
+.map iframe { width: 100%; height: 100%; min-height: 460px; border: 0; filter: grayscale(1) contrast(1.05); }
 
-/* ---------- Footer ---------- */
-.footer { padding: 2.5rem 0; border-top: 1px solid var(--line); }
-.footer__inner { display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; color: var(--muted); font-size: .9rem; }
+/* Footer */
+.footer { padding: 3rem 0; border-top: 1px solid var(--line); }
+.footer__inner { display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; color: var(--muted); font-size: .8rem; }
+.footer .logo { color: var(--text); }
 
-/* ---------- Cart ---------- */
-.cart-fab {
-  position: fixed; right: 22px; bottom: 22px; z-index: 60; width: 62px; height: 62px; border-radius: 50%;
-  background: linear-gradient(135deg, var(--gold-2), var(--gold)); font-size: 1.5rem;
-  box-shadow: 0 14px 30px -8px rgba(217,165,74,.6); transition: transform .2s;
-}
-.cart-fab:hover { transform: scale(1.06); }
-.cart-fab span {
-  position: absolute; top: -4px; right: -4px; min-width: 24px; height: 24px; padding: 0 6px; border-radius: 999px;
-  background: var(--ember); color: #fff; font-size: .78rem; font-weight: 800; display: grid; place-items: center;
-  transform: scale(0); transition: transform .25s;
-}
+/* Cart */
+.cart-fab { position: fixed; right: 20px; bottom: 20px; z-index: 60; width: 56px; height: 56px; border-radius: 50%; background: var(--text); color: var(--bg); display: grid; place-items: center; box-shadow: 0 8px 24px rgba(0,0,0,.15); transition: transform .2s, background .2s; }
+.cart-fab:hover { background: var(--accent); }
+.cart-fab span { position: absolute; top: -2px; right: -2px; min-width: 22px; height: 22px; padding: 0 6px; border-radius: 999px; background: var(--accent); color: #fff; font-size: .7rem; font-weight: 600; display: grid; place-items: center; transform: scale(0); transition: transform .25s; }
 .cart-fab.has span { transform: scale(1); }
 .cart-fab.bump { animation: bump .4s; }
-@keyframes bump { 40% { transform: scale(1.18); } }
-.overlay { position: fixed; inset: 0; background: rgba(0,0,0,.55); z-index: 70; opacity: 0; pointer-events: none; transition: opacity .3s; }
+@keyframes bump { 40% { transform: scale(1.12); } }
+.overlay { position: fixed; inset: 0; background: rgba(28,26,23,.4); z-index: 70; opacity: 0; pointer-events: none; transition: opacity .3s; }
 .overlay.show { opacity: 1; pointer-events: auto; }
-.drawer {
-  position: fixed; top: 0; right: 0; bottom: 0; width: min(420px, 100%); z-index: 80;
-  background: var(--bg-2); border-left: 1px solid var(--line); display: flex; flex-direction: column;
-  transform: translateX(100%); transition: transform .35s cubic-bezier(.2,.8,.2,1);
-}
+.drawer { position: fixed; top: 0; right: 0; bottom: 0; width: min(420px, 100%); z-index: 80; background: var(--bg); display: flex; flex-direction: column; transform: translateX(100%); transition: transform .4s cubic-bezier(.2,.8,.2,1); }
 .drawer.open { transform: none; }
 .drawer__head { display: flex; justify-content: space-between; align-items: center; padding: 1.4rem 1.5rem; border-bottom: 1px solid var(--line); }
-.drawer__head h3 { font-size: 1.5rem; }
-.drawer__list { flex: 1; overflow-y: auto; padding: 1rem 1.5rem; display: flex; flex-direction: column; gap: .9rem; }
-.drawer__foot { padding: 1.4rem 1.5rem; border-top: 1px solid var(--line); display: flex; flex-direction: column; gap: .7rem; }
-.total { display: flex; justify-content: space-between; font-size: 1.1rem; margin-bottom: .4rem; }
-.total strong { color: var(--gold-2); }
-.icon-btn { width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--line); display: grid; place-items: center; transition: .2s; }
-.icon-btn:hover { border-color: var(--gold); }
-.cart-row { display: flex; align-items: center; gap: .9rem; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: .6rem; }
-.cart-row img { width: 58px; height: 58px; border-radius: 10px; object-fit: cover; background: #3a2414; flex: none; }
+.drawer__head h3 { font-size: 1.8rem; }
+.drawer__list { flex: 1; overflow-y: auto; padding: 0 1.5rem; }
+.drawer__foot { padding: 1.4rem 1.5rem; border-top: 1px solid var(--line); display: flex; flex-direction: column; gap: .6rem; }
+.total { display: flex; justify-content: space-between; margin-bottom: .6rem; }
+.total span { font-size: .75rem; letter-spacing: .15em; text-transform: uppercase; color: var(--muted); }
+.icon-btn { width: 40px; height: 40px; display: grid; place-items: center; border-radius: 50%; transition: background .2s; }
+.icon-btn:hover { background: var(--soft); }
+.cart-row { display: flex; align-items: center; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid var(--line); }
+.cart-row img { width: 56px; height: 56px; object-fit: cover; background: var(--soft); flex: none; }
 .cart-row__info { flex: 1; display: flex; flex-direction: column; font-size: .9rem; min-width: 0; }
-.cart-row__info span { color: var(--gold-2); font-size: .85rem; }
-.qty { display: flex; align-items: center; gap: .5rem; }
-.qty button { width: 30px; height: 30px; border-radius: 50%; border: 1px solid var(--line); }
-.qty button:hover { border-color: var(--gold); }
+.cart-row__info span { color: var(--muted); font-size: .8rem; }
+.qty { display: flex; align-items: center; gap: .3rem; border: 1px solid var(--line); border-radius: var(--radius); }
+.qty button { width: 30px; height: 30px; display: grid; place-items: center; }
+.qty span { min-width: 18px; text-align: center; font-size: .85rem; }
 
-/* ---------- Modal ---------- */
-.modal {
-  position: fixed; inset: 0; z-index: 90; background: rgba(0,0,0,.7); backdrop-filter: blur(4px);
-  display: grid; place-items: center; padding: 16px; opacity: 0; pointer-events: none; transition: opacity .3s;
-}
+/* Modal */
+.modal { position: fixed; inset: 0; z-index: 90; background: rgba(28,26,23,.5); display: grid; place-items: center; padding: 16px; opacity: 0; pointer-events: none; transition: opacity .3s; }
 .modal.open { opacity: 1; pointer-events: auto; }
-.modal__card {
-  position: relative; width: min(560px, 100%); max-height: 92vh; overflow-y: auto; background: var(--bg-2);
-  border: 1px solid var(--line); border-radius: 22px; transform: translateY(20px) scale(.97); transition: transform .3s;
-}
+.modal__card { position: relative; width: min(820px, 100%); max-height: 92vh; overflow-y: auto; background: var(--bg); display: grid; grid-template-columns: 1fr 1fr; transform: translateY(12px); transition: transform .3s; }
 .modal.open .modal__card { transform: none; }
-.modal__card > img { width: 100%; aspect-ratio: 16/10; object-fit: cover; background: radial-gradient(circle at 30% 30%, #4a2a16, #1d140d); }
-.modal__close { position: absolute; top: 14px; right: 14px; background: rgba(20,16,12,.7); z-index: 1; }
-.modal__body { padding: 1.6rem; }
-.modal__body .badge { position: static; display: inline-block; margin-bottom: .7rem; }
-.modal__body h3 { font-size: 1.8rem; margin-bottom: .6rem; }
-.modal__foot { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-top: 1.5rem; flex-wrap: wrap; }
-.modal__foot strong { font-size: 1.4rem; color: var(--gold-2); }
+.modal__card > img { width: 100%; height: 100%; min-height: 320px; object-fit: cover; background: var(--soft); }
+.modal__close { position: absolute; top: 10px; right: 10px; background: var(--bg); z-index: 1; }
+.modal__body { padding: 2.5rem 2rem; display: flex; flex-direction: column; }
+.modal__body .badge { position: static; align-self: flex-start; background: var(--soft); margin-bottom: 1rem; }
+.modal__body h3 { font-size: 2.2rem; margin-bottom: .8rem; }
+.modal__foot { margin-top: auto; padding-top: 2rem; display: flex; flex-direction: column; gap: 1rem; }
+.modal__foot strong { font-size: 1.3rem; font-weight: 500; }
 
-/* ---------- Toast ---------- */
-.toast {
-  position: fixed; left: 50%; bottom: 100px; z-index: 100; translate: -50% 20px; opacity: 0;
-  background: var(--text); color: var(--bg); padding: .8rem 1.3rem; border-radius: 999px; font-weight: 600;
-  font-size: .9rem; transition: .3s; pointer-events: none; max-width: calc(100% - 32px); text-align: center;
-}
+/* Toast */
+.toast { position: fixed; left: 50%; bottom: 92px; z-index: 100; translate: -50% 12px; opacity: 0; background: var(--text); color: var(--bg); padding: .8rem 1.2rem; font-size: .85rem; transition: .3s; pointer-events: none; max-width: calc(100% - 32px); text-align: center; border-radius: var(--radius); }
 .toast.show { opacity: 1; translate: -50% 0; }
 
-/* ---------- Reveal ---------- */
-.reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s, transform .8s; }
+/* Reveal */
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity .9s, transform .9s; }
 .reveal.in { opacity: 1; transform: none; }
 
-/* ---------- Responsive ---------- */
-@media (max-width: 920px) {
-  .burger { display: block; }
-  .nav__links {
-    position: fixed; top: 76px; left: 0; right: 0; flex-direction: column; align-items: stretch; gap: 0;
-    background: rgba(20,16,12,.97); backdrop-filter: blur(14px); border-bottom: 1px solid var(--line);
-    padding: .5rem 16px 1.2rem; transform: translateY(-120%); transition: transform .35s; z-index: -1;
-  }
+/* Responsive */
+@media (max-width: 960px) {
+  .burger { display: grid; place-items: center; }
+  .nav__links { position: fixed; top: 72px; left: 0; right: 0; flex-direction: column; align-items: stretch; gap: 0; background: var(--bg); color: var(--text); border-bottom: 1px solid var(--line); padding: .5rem 16px 1.5rem; transform: translateY(-130%); transition: transform .35s; z-index: -1; }
   .nav__links.open { transform: none; }
-  .nav__links a:not(.btn) { padding: .9rem 0; border-bottom: 1px solid var(--line); }
+  .nav__links a:not(.btn) { padding: 1rem 0; border-bottom: 1px solid var(--line); }
   .nav__cta { margin-top: 1rem; }
-  .booking, .contact { grid-template-columns: 1fr; }
+  .about, .booking, .contact { grid-template-columns: 1fr; }
+  .features { grid-template-columns: repeat(2, 1fr); }
+  .feature, .feature + .feature { padding: 1.8rem 1rem 1.8rem 0; border-left: 0; border-bottom: 1px solid var(--line); }
+  .halls { grid-template-columns: 1fr; }
+  .hall__img { aspect-ratio: 4/3; }
   .gallery { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 180px; }
-  .gallery figure:nth-child(5) { grid-column: auto; }
+  .gallery figure:nth-child(6) { grid-column: auto; }
+  .modal__card { grid-template-columns: 1fr; }
+  .modal__card > img { min-height: 0; aspect-ratio: 4/3; }
 }
 @media (max-width: 560px) {
   .form__row { grid-template-columns: 1fr; }
-  .form { padding: 1.4rem; }
-  .hero__stats { gap: 1.4rem; }
-  .search { flex: 1 1 100%; min-width: 0; }
-  .logo__text small { display: none; }
+  .features { grid-template-columns: 1fr; }
+  .search { flex: 1 1 100%; }
+  .menu-grid { grid-template-columns: 1fr 1fr; gap: 2rem 1rem; }
+  .dish h3 { font-size: 1.15rem; }
+  .dish__row { flex-direction: column; gap: .1rem; }
+  .add span { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
   .reveal { opacity: 1; transform: none; }
 }
 </style>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔥</text></svg>" />
 </head>
 <body>
 
-  <!-- ========== NAVBAR ========== -->
-  <header class="nav" id="nav">
-    <div class="container nav__inner">
-      <a href="#home" class="logo">
-        <span class="logo__mark">F</span>
-        <span class="logo__text">Feredun<small>Sharqona oilaviy restoran</small></span>
-      </a>
-      <nav class="nav__links" id="navLinks">
-        <a href="#about">Biz haqimizda</a>
-        <a href="#menu">Menyu</a>
-        <a href="#halls">Zallar</a>
-        <a href="#gallery">Galereya</a>
-        <a href="#contact">Aloqa</a>
-        <a href="#booking" class="btn btn--gold btn--sm nav__cta">Joy band qilish</a>
-      </nav>
-      <button class="burger" id="burger" aria-label="Menyuni ochish"><span></span><span></span><span></span></button>
-    </div>
-  </header>
+<!-- Ikonlar (chiziqli, Lucide uslubida) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-flame" viewBox="0 0 24 24"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.07-2.14-.22-4.05 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.15.43-2.29 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></symbol>
+  <symbol id="i-glass" viewBox="0 0 24 24"><path d="M8 22h8M12 15v7M5 2h14l-1 7a6 6 0 0 1-12 0z"/><path d="M5.5 6h13"/></symbol>
+  <symbol id="i-sofa" viewBox="0 0 24 24"><path d="M20 9V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v3"/><path d="M2 16a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-5a2 2 0 0 0-4 0v1.5H6V11a2 2 0 0 0-4 0z"/><path d="M4 18v2M20 18v2"/></symbol>
+  <symbol id="i-mic" viewBox="0 0 24 24"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M19 10v1a7 7 0 0 1-14 0v-1M12 18v4M8 22h8"/></symbol>
+  <symbol id="i-truck" viewBox="0 0 24 24"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2M15 18H9M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.62l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m16.24 7.76-2.12 6.36-6.36 2.12 2.12-6.36z"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+  <symbol id="i-bag" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18M16 10a4 4 0 0 1-8 0"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="i-minus" viewBox="0 0 24 24"><path d="M5 12h14"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 8h16M4 16h16"/></symbol>
+  <symbol id="i-insta" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></symbol>
+  <symbol id="i-map" viewBox="0 0 24 24"><path d="m3 6 6-3 6 3 6-3v15l-6 3-6-3-6 3z"/><path d="M9 3v15M15 6v15"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></symbol>
+  <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></symbol>
+  <symbol id="i-beef" viewBox="0 0 24 24"><path d="M15.4 15.63a7.88 6 135 1 1 6.23-6.23 4.5 3.43 135 0 0-6.23 6.23"/><path d="m8.29 12.71-2.6 2.6a2.5 2.5 0 1 0-1.65 4.65A2.5 2.5 0 1 0 8.7 18.3l2.59-2.59"/></symbol>
+  <symbol id="i-pot" viewBox="0 0 24 24"><path d="M2 12h20M20 12v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-8"/><path d="m4 8 16-4M8.86 6.78l-.45-1.81a2 2 0 0 1 1.45-2.43l1.94-.48a2 2 0 0 1 2.43 1.46l.45 1.8"/></symbol>
+  <symbol id="i-wheat" viewBox="0 0 24 24"><path d="M2 22 16 8M3.47 12.53 5 11l1.53 1.53a3.5 3.5 0 0 1 0 4.94L5 19l-1.53-1.53a3.5 3.5 0 0 1 0-4.94zM7.47 8.53 9 7l1.53 1.53a3.5 3.5 0 0 1 0 4.94L9 15l-1.53-1.53a3.5 3.5 0 0 1 0-4.94zM11.47 4.53 13 3l1.53 1.53a3.5 3.5 0 0 1 0 4.94L13 11l-1.53-1.53a3.5 3.5 0 0 1 0-4.94zM20 2h2v2a4 4 0 0 1-4 4h-2V6a4 4 0 0 1 4-4z"/></symbol>
+  <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></symbol>
+  <symbol id="i-soup" viewBox="0 0 24 24"><path d="M12 21a9 9 0 0 0 9-9H3a9 9 0 0 0 9 9zM7 21h10M19.5 12 22 6M16.25 3c.27.1.8.53.75 1.36-.06.83-.93 1.2-1 2.02-.05.78.34 1.24.73 1.62M11.25 3c.27.1.8.53.74 1.36-.05.83-.93 1.2-.98 2.02-.06.78.33 1.24.72 1.62M6.25 3c.27.1.8.53.75 1.36-.06.83-.93 1.2-1 2.02-.05.78.34 1.24.74 1.62"/></symbol>
+  <symbol id="i-cake" viewBox="0 0 24 24"><path d="M20 21v-8a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8M4 16s.5-1 2-1 2.5 2 4 2 2.5-2 4-2 2.5 2 4 2 2-1 2-1M2 21h20M7 8v3M12 8v3M17 8v3M7 4h.01M12 4h.01M17 4h.01"/></symbol>
+  <symbol id="i-cup" viewBox="0 0 24 24"><path d="M17 8h1a4 4 0 1 1 0 8h-1M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4zM6 2v2M10 2v2M14 2v2"/></symbol>
+</svg>
 
-  <!-- ========== HERO ========== -->
-  <section class="hero" id="home">
-    <div class="hero__bg"></div>
-    <div class="container hero__content">
-      <p class="eyebrow reveal">Termiz · 5-kichik daha</p>
-      <h1 class="hero__title reveal">Sharqona ta'm,<br><em>oilaviy</em> iliqlik</h1>
-      <p class="hero__lead reveal">Ko'mirda pishgan shashliklar, jo'ja tabaka va o'ziga xos barra. Oila bilan hordiq, tug'ilgan kun va banketlar uchun Termizdagi eng shinam maskan.</p>
-      <div class="hero__actions reveal">
-        <a href="#menu" class="btn btn--gold">Menyuni ko'rish</a>
-        <a href="tel:+998990349595" class="btn btn--ghost">📞 +998 99 034-95-95</a>
-      </div>
-      <ul class="hero__stats reveal">
-        <li><strong>10:00–23:00</strong><span>Har kuni ochiq</span></li>
-        <li><strong>Banket</strong><span>zali mavjud</span></li>
-        <li><strong>Dostavka</strong><span>shahar bo'ylab</span></li>
-      </ul>
-    </div>
-    <a href="#about" class="hero__scroll" aria-label="Pastga">↓</a>
-  </section>
+<!-- NAVBAR -->
+<header class="nav" id="nav">
+  <div class="container nav__inner">
+    <a href="#home" class="logo"><b>Feredun</b><small>Restoran · Termiz</small></a>
+    <nav class="nav__links" id="navLinks">
+      <a href="#about">Biz haqimizda</a>
+      <a href="#menu">Menyu</a>
+      <a href="#halls">Zallar</a>
+      <a href="#gallery">Galereya</a>
+      <a href="#contact">Aloqa</a>
+      <a href="#booking" class="btn btn--sm nav__cta">Joy band qilish</a>
+    </nav>
+    <button class="burger" id="burger" aria-label="Menyuni ochish"><svg class="i"><use href="#i-menu"/></svg></button>
+  </div>
+</header>
 
-  <!-- ========== ABOUT / FEATURES ========== -->
-  <section class="section" id="about">
-    <div class="container">
-      <div class="section__head reveal">
+<!-- HERO -->
+<section class="hero" id="home">
+  <img class="hero__img" src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=2000&q=80" alt="Ko'mirda pishayotgan shashlik" />
+  <div class="container hero__content">
+    <p class="eyebrow reveal">Sharqona oilaviy restoran</p>
+    <h1 class="hero__title reveal">Sharqona ta'm, oilaviy iliqlik</h1>
+    <p class="hero__lead reveal">Ko'mirda pishgan shashliklar, jo'ja tabaka va o'ziga xos barra. Oilaviy hordiq va tantanalar uchun Termizdagi shinam maskan.</p>
+    <div class="hero__actions reveal">
+      <a href="#menu" class="btn btn--dark">Menyuni ko'rish</a>
+      <a href="tel:+998990349595" class="btn btn--light"><svg class="i i--sm"><use href="#i-phone"/></svg>Qo'ng'iroq qilish</a>
+    </div>
+    <div class="hero__meta reveal">
+      <span><svg class="i i--sm"><use href="#i-clock"/></svg>Har kuni 10:00 – 23:00</span>
+      <span><svg class="i i--sm"><use href="#i-pin"/></svg>Alisher Navoiy ko'chasi, 16A</span>
+      <span><svg class="i i--sm"><use href="#i-truck"/></svg>Shahar bo'ylab yetkazib berish</span>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section" id="about">
+  <div class="container">
+    <div class="about">
+      <img class="about__img reveal" loading="lazy" src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1000&q=80" alt="Restoran zali" />
+      <div class="about__text reveal">
         <p class="eyebrow">Biz haqimizda</p>
-        <h2>Feredun — mehmondo'stlik an'anasi</h2>
-        <p class="muted">Termiz shahridagi eng mashhur va shinam maskanlardan biri. Oilaviy hordiq chiqarish va tantanalarni o'tkazish uchun hammasi bor.</p>
-      </div>
-      <div class="features">
-        <article class="feature reveal">
-          <div class="feature__icon">🔥</div>
-          <h3>Ko'mirdagi shashlik</h3>
-          <p>Urama, qo'y, mol, jigar va tovuq — har biri o'z marinadi bilan.</p>
-        </article>
-        <article class="feature reveal">
-          <div class="feature__icon">🎉</div>
-          <h3>Banket zali</h3>
-          <p>Tug'ilgan kun, korporativ kecha va oilaviy bayramlar uchun bezatilgan zal.</p>
-        </article>
-        <article class="feature reveal">
-          <div class="feature__icon">🛋️</div>
-          <h3>Shinam kabinalar</h3>
-          <p>Do'stlar va oila bilan alohida, xotirjam o'tirish uchun.</p>
-        </article>
-        <article class="feature reveal">
-          <div class="feature__icon">🎤</div>
-          <h3>Karaoke & Disko bar</h3>
-          <p>Kuylashni xush ko'ruvchilar uchun karaoke zali va alohida disko bar.</p>
-        </article>
-        <article class="feature reveal">
-          <div class="feature__icon">🛵</div>
-          <h3>Yetkazib berish</h3>
-          <p>Termiz shahri ichida issiq taomlarni uyingizgacha yetkazamiz.</p>
-        </article>
+        <h2>Mehmondo'stlik an'anasi</h2>
+        <p style="margin-top:1.4rem">Feredun — Termiz shahridagi eng mashhur va shinam maskanlardan biri. Bu yerda oila bilan hordiq chiqarish, do'stlar bilan uchrashish va tantanalarni nishonlash uchun hamma sharoit yaratilgan.</p>
+        <p>Har bir taom sharqona an'analar asosida, yangi masalliqlardan, ko'mir olovida tayyorlanadi.</p>
+        <a href="#menu" class="link" style="margin-top:1rem">Menyu bilan tanishish <svg class="i i--sm"><use href="#i-arrow"/></svg></a>
       </div>
     </div>
-  </section>
+    <div class="features">
+      <article class="feature reveal"><svg class="i i--lg"><use href="#i-flame"/></svg><h3>Ko'mirdagi shashlik</h3><p>Urama, qo'y, mol, jigar va tovuq.</p></article>
+      <article class="feature reveal"><svg class="i i--lg"><use href="#i-glass"/></svg><h3>Banket zali</h3><p>Bayram va korporativ kechalar uchun.</p></article>
+      <article class="feature reveal"><svg class="i i--lg"><use href="#i-sofa"/></svg><h3>Kabinalar</h3><p>Oila bilan alohida, xotirjam o'tirish.</p></article>
+      <article class="feature reveal"><svg class="i i--lg"><use href="#i-mic"/></svg><h3>Karaoke & bar</h3><p>Karaoke zali va alohida disko bar.</p></article>
+      <article class="feature reveal"><svg class="i i--lg"><use href="#i-truck"/></svg><h3>Yetkazib berish</h3><p>Termiz shahri bo'ylab dostavka.</p></article>
+    </div>
+  </div>
+</section>
 
-  <!-- ========== MENU ========== -->
-  <section class="section section--dark" id="menu">
-    <div class="container">
-      <div class="section__head reveal">
-        <p class="eyebrow">Taomnoma</p>
-        <h2>Bizning menyu</h2>
-        <p class="muted">Taomni bosing — batafsil ko'ring va savatchaga qo'shing.</p>
+<!-- MENU -->
+<section class="section section--soft" id="menu">
+  <div class="container">
+    <div class="section__head section__head--center reveal">
+      <p class="eyebrow">Taomnoma</p>
+      <h2>Menyu</h2>
+      <p class="muted">Taomni tanlang — batafsil ma'lumot va buyurtma uchun.</p>
+    </div>
+    <div class="menu-toolbar">
+      <div class="tabs" id="tabs" role="tablist"></div>
+      <label class="search"><svg class="i i--sm"><use href="#i-search"/></svg><input type="search" id="search" placeholder="Qidirish" /></label>
+    </div>
+    <div class="menu-grid" id="menuGrid"></div>
+    <p class="empty" id="menuEmpty" hidden>Hech narsa topilmadi</p>
+    <p class="note">Narxlar so'mda ko'rsatilgan. Aniq narxlarni telefon orqali so'rang.</p>
+  </div>
+</section>
+
+<!-- HALLS -->
+<section class="section" id="halls">
+  <div class="container">
+    <div class="section__head reveal">
+      <p class="eyebrow">Imkoniyatlar</p>
+      <h2>Har bir tadbir uchun joy</h2>
+    </div>
+    <div class="halls">
+      <article class="hall reveal">
+        <div class="hall__img"><img loading="lazy" src="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?auto=format&fit=crop&w=900&q=80" alt="Banket zali" /></div>
+        <span class="hall__num">01</span>
+        <h3>Banket zali</h3>
+        <p>Tug'ilgan kun, korporativ kecha va oilaviy bayramlar. Bezak va maxsus menyu kelishiladi.</p>
+        <a href="#booking" class="link">Band qilish <svg class="i i--sm"><use href="#i-arrow"/></svg></a>
+      </article>
+      <article class="hall reveal">
+        <div class="hall__img"><img loading="lazy" src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=900&q=80" alt="Kabinalar" /></div>
+        <span class="hall__num">02</span>
+        <h3>Kabinalar</h3>
+        <p>Yopiq, shinam kabinalar — oila va do'stlar bilan xotirjam suhbat uchun.</p>
+        <a href="#booking" class="link">Band qilish <svg class="i i--sm"><use href="#i-arrow"/></svg></a>
+      </article>
+      <article class="hall reveal">
+        <div class="hall__img"><img loading="lazy" src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=900&q=80" alt="Karaoke va disko bar" /></div>
+        <span class="hall__num">03</span>
+        <h3>Karaoke & Disko bar</h3>
+        <p>Sevimli qo'shiqlaringizni kuylang yoki kechani disko barda davom ettiring.</p>
+        <a href="#booking" class="link">Band qilish <svg class="i i--sm"><use href="#i-arrow"/></svg></a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="section section--soft" id="gallery">
+  <div class="container">
+    <div class="section__head section__head--center reveal">
+      <p class="eyebrow">Galereya</p>
+      <h2>Feredun atmosferasi</h2>
+      <p class="muted">Ko'proq rasmlar: <a class="link" href="https://www.instagram.com/feredun.restaurant/" target="_blank" rel="noopener">@feredun.restaurant</a></p>
+    </div>
+    <div class="gallery" id="gallery-grid"></div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section class="section" id="booking">
+  <div class="container booking">
+    <div class="reveal">
+      <p class="eyebrow">Bron</p>
+      <h2>Joy band qilish</h2>
+      <p class="muted" style="margin-top:1.2rem;max-width:40ch">Formani to'ldiring — bron matni tayyorlanadi. Tasdiqlash uchun bizga qo'ng'iroq qiling.</p>
+      <div class="phones">
+        <a href="tel:+998990349595" class="phone"><span><svg class="i i--sm"><use href="#i-phone"/></svg>+998 (99) 034-95-95</span><svg class="i i--sm"><use href="#i-arrow"/></svg></a>
+        <a href="tel:+998902943638" class="phone"><span><svg class="i i--sm"><use href="#i-phone"/></svg>+998 (90) 294-36-38</span><svg class="i i--sm"><use href="#i-arrow"/></svg></a>
       </div>
-
-      <div class="menu-toolbar reveal">
-        <div class="tabs" id="tabs" role="tablist"></div>
-        <label class="search">
-          <span>🔍</span>
-          <input type="search" id="search" placeholder="Taom qidirish..." />
+    </div>
+    <form class="form reveal" id="bookingForm">
+      <div class="form__row">
+        <label>Ismingiz<input name="name" required placeholder="Ism" /></label>
+        <label>Telefon<input name="phone" type="tel" required placeholder="+998" /></label>
+      </div>
+      <div class="form__row">
+        <label>Sana<input name="date" type="date" required /></label>
+        <label>Vaqt<input name="time" type="time" required value="19:00" /></label>
+      </div>
+      <div class="form__row">
+        <label>Mehmonlar soni<input name="guests" type="number" min="1" max="300" value="4" required /></label>
+        <label>Joy turi
+          <select name="place"><option>Umumiy zal</option><option>Kabina</option><option>Banket zali</option><option>Karaoke zali</option></select>
         </label>
       </div>
+      <label>Izoh<textarea name="note" rows="2" placeholder="Tug'ilgan kun, bezak, maxsus istaklar"></textarea></label>
+      <button class="btn btn--dark btn--block" type="submit">Bron so'rovini tayyorlash</button>
+      <p class="form__ok" id="formOk" hidden></p>
+    </form>
+  </div>
+</section>
 
-      <div class="menu-grid" id="menuGrid"></div>
-      <p class="empty" id="menuEmpty" hidden>Hech narsa topilmadi 🙁</p>
-      <p class="note">* Narxlar so'mda. Aniq narxlarni telefon orqali so'rang.</p>
-    </div>
-  </section>
-
-  <!-- ========== HALLS ========== -->
-  <section class="section" id="halls">
-    <div class="container">
-      <div class="section__head reveal">
-        <p class="eyebrow">Imkoniyatlar</p>
-        <h2>Har bir tadbir uchun joy</h2>
-      </div>
-      <div class="halls">
-        <article class="hall reveal">
-          <img loading="lazy" src="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?auto=format&fit=crop&w=900&q=75" alt="Banket zali" />
-          <div class="hall__body">
-            <h3>Banket zali</h3>
-            <p>Korporativ kechalar, tug'ilgan kunlar, unashuv va oilaviy bayramlar. Bezak va maxsus menyu kelishiladi.</p>
-            <a href="#booking" class="link">Band qilish →</a>
-          </div>
-        </article>
-        <article class="hall reveal">
-          <img loading="lazy" src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=900&q=75" alt="Kabinalar" />
-          <div class="hall__body">
-            <h3>Kabinalar</h3>
-            <p>Yopiq, shinam kabinalar — oila va do'stlar bilan xotirjam suhbat uchun.</p>
-            <a href="#booking" class="link">Band qilish →</a>
-          </div>
-        </article>
-        <article class="hall reveal">
-          <img loading="lazy" src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=900&q=75" alt="Karaoke va disko bar" />
-          <div class="hall__body">
-            <h3>Karaoke & Disko bar</h3>
-            <p>Sevimli qo'shiqlaringizni kuylang yoki disko barda kechani davom ettiring.</p>
-            <a href="#booking" class="link">Band qilish →</a>
-          </div>
-        </article>
+<!-- CONTACT -->
+<section class="section section--soft" id="contact">
+  <div class="container contact">
+    <div class="reveal">
+      <p class="eyebrow">Aloqa</p>
+      <h2>Bizni toping</h2>
+      <ul class="info-list">
+        <li><svg class="i"><use href="#i-pin"/></svg><div><strong>Manzil</strong>Surxondaryo viloyati, Termiz sh., 5-kichik daha, Alisher Navoiy ko'chasi, 16A-uy</div></li>
+        <li><svg class="i"><use href="#i-compass"/></svg><div><strong>Mo'ljal</strong>"Serenada" to'yxonasining ro'parasi</div></li>
+        <li><svg class="i"><use href="#i-clock"/></svg><div><strong>Ish vaqti</strong>Har kuni 10:00 – 23:00</div></li>
+        <li><svg class="i"><use href="#i-phone"/></svg><div><strong>Telefon</strong><a href="tel:+998990349595">+998 (99) 034-95-95</a><br><a href="tel:+998902943638">+998 (90) 294-36-38</a></div></li>
+      </ul>
+      <div class="socials">
+        <a href="https://www.instagram.com/feredun.restaurant/" target="_blank" rel="noopener" class="btn btn--line btn--sm"><svg class="i i--sm"><use href="#i-insta"/></svg>Instagram</a>
+        <a href="https://yandex.uz/maps/org/feredun_cafe/233504928149/" target="_blank" rel="noopener" class="btn btn--line btn--sm"><svg class="i i--sm"><use href="#i-map"/></svg>Yandex Xarita</a>
       </div>
     </div>
-  </section>
-
-  <!-- ========== GALLERY ========== -->
-  <section class="section section--dark" id="gallery">
-    <div class="container">
-      <div class="section__head reveal">
-        <p class="eyebrow">Galereya</p>
-        <h2>Feredun atmosferasi</h2>
-        <p class="muted">Ko'proq rasmlar — <a class="link" href="https://www.instagram.com/feredun.restaurant/" target="_blank" rel="noopener">@feredun.restaurant</a></p>
-      </div>
-      <div class="gallery" id="gallery-grid"></div>
+    <div class="map reveal">
+      <iframe title="Feredun Cafe xaritada" loading="lazy" src="https://yandex.uz/map-widget/v1/?oid=233504928149&z=16&l=map" allowfullscreen></iframe>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ========== BOOKING ========== -->
-  <section class="section" id="booking">
-    <div class="container booking">
-      <div class="booking__info reveal">
-        <p class="eyebrow">Bron</p>
-        <h2>Joy band qilish</h2>
-        <p class="muted">Formani to'ldiring — bron matni tayyorlanadi, uni nusxalab yuborishingiz yoki to'g'ridan-to'g'ri qo'ng'iroq qilishingiz mumkin.</p>
-        <div class="phones">
-          <a href="tel:+998990349595" class="phone">📞 +998 (99) 034-95-95</a>
-          <a href="tel:+998902943638" class="phone">📞 +998 (90) 294-36-38</a>
-        </div>
-      </div>
-      <form class="form reveal" id="bookingForm">
-        <div class="form__row">
-          <label>Ismingiz<input name="name" required placeholder="Ism" /></label>
-          <label>Telefon<input name="phone" type="tel" required placeholder="+998 __ ___ __ __" /></label>
-        </div>
-        <div class="form__row">
-          <label>Sana<input name="date" type="date" required /></label>
-          <label>Vaqt<input name="time" type="time" required value="19:00" /></label>
-        </div>
-        <div class="form__row">
-          <label>Mehmonlar soni<input name="guests" type="number" min="1" max="300" value="4" required /></label>
-          <label>Joy turi
-            <select name="place">
-              <option>Umumiy zal</option>
-              <option>Kabina</option>
-              <option>Banket zali</option>
-              <option>Karaoke zali</option>
-            </select>
-          </label>
-        </div>
-        <label>Izoh<textarea name="note" rows="3" placeholder="Tug'ilgan kun, bezak, maxsus istaklar..."></textarea></label>
-        <button class="btn btn--gold btn--block" type="submit">Bron so'rovini tayyorlash</button>
-        <p class="form__ok" id="formOk" hidden></p>
-      </form>
-    </div>
-  </section>
+<footer class="footer">
+  <div class="container footer__inner">
+    <a href="#home" class="logo"><b>Feredun</b><small>Restoran · Termiz</small></a>
+    <p>© <span id="year"></span> Feredun Cafe. Termiz, Alisher Navoiy ko'chasi, 16A</p>
+  </div>
+</footer>
 
-  <!-- ========== CONTACT ========== -->
-  <section class="section section--dark" id="contact">
-    <div class="container contact">
-      <div class="contact__info reveal">
-        <p class="eyebrow">Aloqa</p>
-        <h2>Bizni toping</h2>
-        <ul class="info-list">
-          <li><span>📍</span><div><strong>Manzil</strong>Surxondaryo viloyati, Termiz sh., 5-kichik daha, Alisher Navoiy ko'chasi, 16A-uy</div></li>
-          <li><span>🧭</span><div><strong>Mo'ljal</strong>"Serenada" to'yxonasining ro'parasi</div></li>
-          <li><span>⏰</span><div><strong>Ish vaqti</strong>Har kuni 10:00 – 23:00</div></li>
-          <li><span>📞</span><div><strong>Telefon</strong><a href="tel:+998990349595">+998 (99) 034-95-95</a><br><a href="tel:+998902943638">+998 (90) 294-36-38</a></div></li>
-        </ul>
-        <div class="socials">
-          <a href="https://www.instagram.com/feredun.restaurant/" target="_blank" rel="noopener" class="btn btn--ghost btn--sm">Instagram</a>
-          <a href="https://yandex.uz/maps/org/feredun_cafe/233504928149/" target="_blank" rel="noopener" class="btn btn--ghost btn--sm">Yandex Xarita</a>
-        </div>
-      </div>
-      <div class="map reveal">
-        <iframe title="Feredun Cafe xaritada" loading="lazy"
-          src="https://yandex.uz/map-widget/v1/?oid=233504928149&z=16&l=map"
-          allowfullscreen></iframe>
-      </div>
-    </div>
-  </section>
+<!-- CART -->
+<button class="cart-fab" id="cartFab" aria-label="Savatcha"><svg class="i"><use href="#i-bag"/></svg><span id="cartCount">0</span></button>
+<aside class="drawer" id="drawer" aria-hidden="true">
+  <div class="drawer__head">
+    <h3>Buyurtma</h3>
+    <button class="icon-btn" data-close-drawer aria-label="Yopish"><svg class="i"><use href="#i-x"/></svg></button>
+  </div>
+  <div class="drawer__list" id="cartList"></div>
+  <div class="drawer__foot">
+    <div class="total"><span>Jami</span><strong id="cartTotal">0 so'm</strong></div>
+    <button class="btn btn--dark btn--block" id="orderBtn" type="button"><svg class="i i--sm"><use href="#i-copy"/></svg>Buyurtma matnini nusxalash</button>
+    <a class="btn btn--line btn--block" href="tel:+998990349595"><svg class="i i--sm"><use href="#i-phone"/></svg>Qo'ng'iroq qilish</a>
+  </div>
+</aside>
+<div class="overlay" id="overlay"></div>
 
-  <footer class="footer">
-    <div class="container footer__inner">
-      <a href="#home" class="logo"><span class="logo__mark">F</span><span class="logo__text">Feredun<small>Sharqona oilaviy restoran</small></span></a>
-      <p>© <span id="year"></span> Feredun Cafe · Termiz</p>
-    </div>
-  </footer>
-
-  <!-- ========== CART FAB + DRAWER ========== -->
-  <button class="cart-fab" id="cartFab" aria-label="Savatcha">🛒<span id="cartCount">0</span></button>
-  <aside class="drawer" id="drawer" aria-hidden="true">
-    <div class="drawer__head">
-      <h3>Buyurtma</h3>
-      <button class="icon-btn" data-close-drawer aria-label="Yopish">✕</button>
-    </div>
-    <div class="drawer__list" id="cartList"></div>
-    <div class="drawer__foot">
-      <div class="total"><span>Jami:</span><strong id="cartTotal">0 so'm</strong></div>
-      <button class="btn btn--gold btn--block" id="orderBtn" type="button">Buyurtma matnini nusxalash</button>
-      <a class="btn btn--ghost btn--block" href="tel:+998990349595">Qo'ng'iroq qilish</a>
-    </div>
-  </aside>
-  <div class="overlay" id="overlay"></div>
-
-  <!-- ========== DISH MODAL ========== -->
-  <div class="modal" id="modal" aria-hidden="true">
-    <div class="modal__card">
-      <button class="icon-btn modal__close" data-close-modal aria-label="Yopish">✕</button>
-      <img id="modalImg" alt="" />
-      <div class="modal__body">
-        <span class="badge" id="modalBadge"></span>
-        <h3 id="modalTitle"></h3>
-        <p class="muted" id="modalDesc"></p>
-        <div class="modal__foot">
-          <div><strong id="modalPrice"></strong> <small class="muted" id="modalUnit"></small></div>
-          <button class="btn btn--gold" id="modalAdd">Savatchaga qo'shish</button>
-        </div>
+<!-- MODAL -->
+<div class="modal" id="modal" aria-hidden="true">
+  <div class="modal__card">
+    <button class="icon-btn modal__close" data-close-modal aria-label="Yopish"><svg class="i"><use href="#i-x"/></svg></button>
+    <img id="modalImg" alt="" />
+    <div class="modal__body">
+      <span class="badge" id="modalBadge"></span>
+      <h3 id="modalTitle"></h3>
+      <p class="muted" id="modalDesc"></p>
+      <div class="modal__foot">
+        <div><strong id="modalPrice"></strong> <span class="unit" id="modalUnit"></span></div>
+        <button class="btn btn--dark btn--block" id="modalAdd"><svg class="i i--sm"><use href="#i-plus"/></svg>Savatchaga qo'shish</button>
       </div>
     </div>
   </div>
+</div>
 
-  <div class="toast" id="toast"></div>
+<div class="toast" id="toast"></div>
 
-  <script>
+<script>
 /*
- * Feredun Cafe — menyu ma'lumotlari.
- *
- * RASMLAR: har bir taom uchun avval `images/menu/<id>.jpg` fayli qidiriladi.
- * Restoranning haqiqiy taom rasmlarini shu nom bilan `images/menu/` papkasiga
- * joylashtiring (masalan: images/menu/urama-shashlik.jpg) — sayt avtomatik
- * ularni ko'rsatadi. Fayl topilmasa, `fallback` dagi onlayn rasm ishlatiladi.
- *
- * NARXLAR: taxminiy, restoranning amaldagi narxlari bilan almashtiring.
+ * MENYU MA'LUMOTLARI
+ * Rasmlar: avval images/menu/<id>.jpg qidiriladi (restoranning haqiqiy rasmlari),
+ * topilmasa — `fallback` dagi onlayn rasm ko'rsatiladi.
+ * Narxlar taxminiy — amaldagi narxlar bilan almashtiring.
  */
-
 const U = (id) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=800&q=75`;
 
 window.MENU_CATEGORIES = [
-  { id: "all", name: "Barchasi", icon: "✦" },
-  { id: "shashlik", name: "Shashliklar", icon: "🔥" },
-  { id: "hot", name: "Issiq taomlar", icon: "🍲" },
-  { id: "national", name: "Milliy taomlar", icon: "🫓" },
-  { id: "salad", name: "Salatlar", icon: "🥗" },
-  { id: "soup", name: "Sho'rvalar", icon: "🥣" },
-  { id: "dessert", name: "Shirinliklar", icon: "🍰" },
-  { id: "drinks", name: "Ichimliklar", icon: "🍹" },
+  { id: "all", name: "Barchasi", icon: "grid" },
+  { id: "shashlik", name: "Shashliklar", icon: "flame" },
+  { id: "hot", name: "Issiq taomlar", icon: "beef" },
+  { id: "national", name: "Milliy taomlar", icon: "wheat" },
+  { id: "salad", name: "Salatlar", icon: "leaf" },
+  { id: "soup", name: "Sho'rvalar", icon: "soup" },
+  { id: "dessert", name: "Shirinliklar", icon: "cake" },
+  { id: "drinks", name: "Ichimliklar", icon: "cup" },
 ];
 
 window.MENU_ITEMS = [
@@ -643,8 +550,8 @@ window.MENU_ITEMS = [
   // --- Issiq taomlar ---
   { id: "joja-tabaka", cat: "hot", name: "Jo'ja tabaka", desc: "Butun jo'ja, qarsildoq qilib qovurilgan, sarimsoqli sous va garnir bilan.", price: 75000, unit: "1 dona", badge: "Xit", fallback: U("photo-1598103442097-8b74394b95c6") },
   { id: "barra", cat: "hot", name: "Barra", desc: "Tandirda sekin pishirilgan yosh qo'zichoq go'shti — Feredunning o'ziga xos taomi.", price: 180000, unit: "1 kg", badge: "Maxsus", fallback: U("photo-1600891964092-4316c288032e") },
-  { id: "qozon-kabob", cat: "hot", name: "Qozon kabob", desc: "Qo'y go'shti va kartoshka qozonda qovurilgan.", price: 85000, unit: "porsiya", fallback: U("photo-1544025162-d76694265947") },
-  { id: "steyk", cat: "hot", name: "Mol go'shtidan steyk", desc: "Grilda pishirilgan steyk, sabzavotlar va sous bilan.", price: 120000, unit: "porsiya", fallback: U("photo-1600891964092-4316c288032e") },
+  { id: "qozon-kabob", cat: "hot", name: "Qozon kabob", desc: "Qo'y go'shti va kartoshka qozonda qovurilgan.", price: 85000, unit: "porsiya", fallback: U("photo-1574484284002-952d92456975") },
+  { id: "steyk", cat: "hot", name: "Mol go'shtidan steyk", desc: "Grilda pishirilgan steyk, sabzavotlar va sous bilan.", price: 120000, unit: "porsiya", fallback: U("photo-1546964124-0cce460f38ef") },
   { id: "gril-sabzavot", cat: "hot", name: "Grilda sabzavotlar", desc: "Bulg'or qalampiri, baqlajon, pomidor va qo'ziqorin.", price: 35000, unit: "porsiya", fallback: U("photo-1540420773420-3366772f4999") },
 
   // --- Milliy taomlar ---
@@ -677,67 +584,50 @@ window.MENU_ITEMS = [
 
 window.GALLERY = [
   { src: "images/gallery/1.jpg", fallback: U("photo-1517248135467-4c7edcad34c4"), title: "Asosiy zal" },
-  { src: "images/gallery/2.jpg", fallback: U("photo-1519671482749-fd09be7ccebf"), title: "Banket zali" },
-  { src: "images/gallery/3.jpg", fallback: U("photo-1555396273-367ea4eb4db5"), title: "Shinam kabinalar" },
-  { src: "images/gallery/4.jpg", fallback: U("photo-1555939594-58d7cb561ad1"), title: "Mangal" },
-  { src: "images/gallery/5.jpg", fallback: U("photo-1516450360452-9312f5e86fc7"), title: "Disko bar" },
-  { src: "images/gallery/6.jpg", fallback: U("photo-1414235077428-338989a2e8c0"), title: "Dasturxon" },
+  { src: "images/gallery/2.jpg", fallback: U("photo-1555939594-58d7cb561ad1"), title: "Mangal" },
+  { src: "images/gallery/3.jpg", fallback: U("photo-1519671482749-fd09be7ccebf"), title: "Banket zali" },
+  { src: "images/gallery/4.jpg", fallback: U("photo-1555396273-367ea4eb4db5"), title: "Kabinalar" },
+  { src: "images/gallery/5.jpg", fallback: U("photo-1414235077428-338989a2e8c0"), title: "Dasturxon" },
+  { src: "images/gallery/6.jpg", fallback: U("photo-1516450360452-9312f5e86fc7"), title: "Disko bar" },
 ];
-
 </script>
 <script>
 (() => {
   const $ = (s, el = document) => el.querySelector(s);
   const $$ = (s, el = document) => [...el.querySelectorAll(s)];
   const fmt = (n) => n.toLocaleString("ru-RU").replace(/,/g, " ") + " so'm";
+  const icon = (name, cls = "i i--sm") => `<svg class="${cls}"><use href="#i-${name}"/></svg>`;
   const PHONE = "+998 (99) 034-95-95";
 
-  /* ---------- Rasm: avval mahalliy fayl, keyin onlayn, keyin gradient ---------- */
   function smartImg(img, local, fallback) {
     img.dataset.stage = "local";
     img.onerror = () => {
-      if (img.dataset.stage === "local" && fallback) {
-        img.dataset.stage = "remote";
-        img.src = fallback;
-      } else {
-        img.onerror = null;
-        img.classList.add("img--missing");
-        img.removeAttribute("src");
-      }
+      if (img.dataset.stage === "local" && fallback) { img.dataset.stage = "remote"; img.src = fallback; }
+      else { img.onerror = null; img.classList.add("img--missing"); img.removeAttribute("src"); }
     };
     img.src = local;
   }
 
-  /* ---------- Navbar ---------- */
+  /* Navbar */
   const nav = $("#nav");
   const onScroll = () => nav.classList.toggle("nav--solid", scrollY > 40);
   addEventListener("scroll", onScroll, { passive: true });
   onScroll();
-
-  const burger = $("#burger");
-  const links = $("#navLinks");
+  const burger = $("#burger"), links = $("#navLinks");
   burger.addEventListener("click", () => {
-    burger.classList.toggle("open");
-    links.classList.toggle("open");
+    const open = links.classList.toggle("open");
+    burger.innerHTML = icon(open ? "x" : "menu", "i");
+    if (open) nav.classList.add("nav--solid"); else onScroll();
   });
-  $$("#navLinks a").forEach((a) =>
-    a.addEventListener("click", () => {
-      burger.classList.remove("open");
-      links.classList.remove("open");
-    })
-  );
+  $$("#navLinks a").forEach((a) => a.addEventListener("click", () => { links.classList.remove("open"); burger.innerHTML = icon("menu", "i"); onScroll(); }));
 
-  /* ---------- Menyu ---------- */
-  const tabsEl = $("#tabs");
-  const grid = $("#menuGrid");
-  const emptyEl = $("#menuEmpty");
-  let activeCat = "all";
-  let query = "";
-
+  /* Menyu */
+  const tabsEl = $("#tabs"), grid = $("#menuGrid"), emptyEl = $("#menuEmpty");
+  let activeCat = "all", query = "";
   MENU_CATEGORIES.forEach((c) => {
     const b = document.createElement("button");
     b.className = "tab" + (c.id === activeCat ? " active" : "");
-    b.innerHTML = `<span>${c.icon}</span>${c.name}`;
+    b.innerHTML = icon(c.icon) + c.name;
     b.setAttribute("role", "tab");
     b.addEventListener("click", () => {
       activeCat = c.id;
@@ -747,18 +637,10 @@ window.GALLERY = [
     });
     tabsEl.appendChild(b);
   });
-
-  $("#search").addEventListener("input", (e) => {
-    query = e.target.value.trim().toLowerCase();
-    renderMenu();
-  });
+  $("#search").addEventListener("input", (e) => { query = e.target.value.trim().toLowerCase(); renderMenu(); });
 
   function renderMenu() {
-    const items = MENU_ITEMS.filter(
-      (i) =>
-        (activeCat === "all" || i.cat === activeCat) &&
-        (!query || (i.name + " " + i.desc).toLowerCase().includes(query))
-    );
+    const items = MENU_ITEMS.filter((i) => (activeCat === "all" || i.cat === activeCat) && (!query || (i.name + " " + i.desc).toLowerCase().includes(query)));
     grid.innerHTML = "";
     emptyEl.hidden = items.length > 0;
     items.forEach((item, idx) => {
@@ -766,30 +648,19 @@ window.GALLERY = [
       card.className = "dish";
       card.style.animationDelay = `${Math.min(idx, 12) * 40}ms`;
       card.innerHTML = `
-        <div class="dish__img">
-          <img loading="lazy" alt="${item.name}" />
-          ${item.badge ? `<span class="badge">${item.badge}</span>` : ""}
-        </div>
-        <div class="dish__body">
-          <h3>${item.name}</h3>
-          <p>${item.desc}</p>
-          <div class="dish__foot">
-            <span class="price">${fmt(item.price)}<small> / ${item.unit}</small></span>
-            <button class="add" aria-label="Savatchaga qo'shish">+</button>
-          </div>
-        </div>`;
+        <div class="dish__img"><img loading="lazy" alt="${item.name}" />${item.badge ? `<span class="badge">${item.badge}</span>` : ""}</div>
+        <div class="dish__row"><h3>${item.name}</h3><span class="price">${fmt(item.price)}</span></div>
+        <p>${item.desc}</p>
+        <div class="dish__foot"><span class="unit">${item.unit}</span><button class="add" aria-label="Savatchaga qo'shish">${icon("plus")}<span>Qo'shish</span></button></div>`;
       smartImg($("img", card), `images/menu/${item.id}.jpg`, item.fallback);
-      $(".add", card).addEventListener("click", (e) => {
-        e.stopPropagation();
-        addToCart(item.id);
-      });
+      $(".add", card).addEventListener("click", (e) => { e.stopPropagation(); addToCart(item.id); });
       card.addEventListener("click", () => openModal(item));
       grid.appendChild(card);
     });
   }
   renderMenu();
 
-  /* ---------- Modal ---------- */
+  /* Modal */
   const modal = $("#modal");
   let modalItem = null;
   function openModal(item) {
@@ -807,46 +678,24 @@ window.GALLERY = [
     modal.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden";
   }
-  function closeModal() {
-    modal.classList.remove("open");
-    modal.setAttribute("aria-hidden", "true");
-    document.body.style.overflow = "";
-  }
-  modal.addEventListener("click", (e) => {
-    if (e.target === modal || e.target.closest("[data-close-modal]")) closeModal();
-  });
-  $("#modalAdd").addEventListener("click", () => {
-    if (modalItem) addToCart(modalItem.id);
-    closeModal();
-  });
+  function closeModal() { modal.classList.remove("open"); modal.setAttribute("aria-hidden", "true"); document.body.style.overflow = ""; }
+  modal.addEventListener("click", (e) => { if (e.target === modal || e.target.closest("[data-close-modal]")) closeModal(); });
+  $("#modalAdd").addEventListener("click", () => { if (modalItem) addToCart(modalItem.id); closeModal(); });
 
-  /* ---------- Savatcha ---------- */
+  /* Savatcha */
   let cart = {};
   try { cart = JSON.parse(localStorage.getItem("feredun-cart")) || {}; } catch (_) {}
   const save = () => { try { localStorage.setItem("feredun-cart", JSON.stringify(cart)); } catch (_) {} };
   const byId = (id) => MENU_ITEMS.find((i) => i.id === id);
-
   function addToCart(id) {
     cart[id] = (cart[id] || 0) + 1;
-    save();
-    renderCart();
+    save(); renderCart();
     toast(`${byId(id).name} savatchaga qo'shildi`);
-    const fab = $("#cartFab");
-    fab.classList.remove("bump");
-    void fab.offsetWidth;
-    fab.classList.add("bump");
+    const fab = $("#cartFab"); fab.classList.remove("bump"); void fab.offsetWidth; fab.classList.add("bump");
   }
-  function changeQty(id, d) {
-    cart[id] = (cart[id] || 0) + d;
-    if (cart[id] <= 0) delete cart[id];
-    save();
-    renderCart();
-  }
+  function changeQty(id, d) { cart[id] = (cart[id] || 0) + d; if (cart[id] <= 0) delete cart[id]; save(); renderCart(); }
   function cartText() {
-    const lines = Object.entries(cart).map(([id, q]) => {
-      const it = byId(id);
-      return `• ${it.name} × ${q} = ${fmt(it.price * q)}`;
-    });
+    const lines = Object.entries(cart).filter(([id]) => byId(id)).map(([id, q]) => { const it = byId(id); return `- ${it.name} x ${q} = ${fmt(it.price * q)}`; });
     return `Feredun Cafe — buyurtma:\n${lines.join("\n")}\nJami: ${$("#cartTotal").textContent}`;
   }
   function renderCart() {
@@ -856,14 +705,11 @@ window.GALLERY = [
     list.innerHTML = entries.length ? "" : `<p class="muted center">Savatcha bo'sh</p>`;
     entries.forEach(([id, q]) => {
       const it = byId(id);
-      total += it.price * q;
-      count += q;
+      total += it.price * q; count += q;
       const row = document.createElement("div");
       row.className = "cart-row";
-      row.innerHTML = `
-        <img alt="" />
-        <div class="cart-row__info"><strong>${it.name}</strong><span>${fmt(it.price)}</span></div>
-        <div class="qty"><button data-d="-1">−</button><span>${q}</span><button data-d="1">+</button></div>`;
+      row.innerHTML = `<img alt="" /><div class="cart-row__info"><strong>${it.name}</strong><span>${fmt(it.price)}</span></div>
+        <div class="qty"><button data-d="-1" aria-label="Kamaytirish">${icon("minus")}</button><span>${q}</span><button data-d="1" aria-label="Ko'paytirish">${icon("plus")}</button></div>`;
       smartImg($("img", row), `images/menu/${it.id}.jpg`, it.fallback);
       $$(".qty button", row).forEach((b) => b.addEventListener("click", () => changeQty(id, +b.dataset.d)));
       list.appendChild(row);
@@ -874,18 +720,11 @@ window.GALLERY = [
     $("#orderBtn").disabled = count === 0;
   }
   renderCart();
-
   $("#orderBtn").addEventListener("click", async () => {
-    try {
-      await navigator.clipboard.writeText(cartText());
-      toast(`Buyurtma nusxalandi. Endi ${PHONE} raqamiga yuboring yoki qo'ng'iroq qiling.`, 5000);
-    } catch (_) {
-      alert(cartText());
-    }
+    try { await navigator.clipboard.writeText(cartText()); toast(`Buyurtma nusxalandi. ${PHONE} raqamiga yuboring yoki qo'ng'iroq qiling.`, 5000); }
+    catch (_) { alert(cartText()); }
   });
-
-  const drawer = $("#drawer");
-  const overlay = $("#overlay");
+  const drawer = $("#drawer"), overlay = $("#overlay");
   const openDrawer = () => { drawer.classList.add("open"); overlay.classList.add("show"); drawer.setAttribute("aria-hidden", "false"); };
   const closeDrawer = () => { drawer.classList.remove("open"); overlay.classList.remove("show"); drawer.setAttribute("aria-hidden", "true"); };
   $("#cartFab").addEventListener("click", openDrawer);
@@ -893,7 +732,7 @@ window.GALLERY = [
   $("[data-close-drawer]").addEventListener("click", closeDrawer);
   addEventListener("keydown", (e) => { if (e.key === "Escape") { closeDrawer(); closeModal(); } });
 
-  /* ---------- Galereya ---------- */
+  /* Galereya */
   const gal = $("#gallery-grid");
   GALLERY.forEach((g) => {
     const fig = document.createElement("figure");
@@ -902,40 +741,26 @@ window.GALLERY = [
     gal.appendChild(fig);
   });
 
-  /* ---------- Bron formasi ---------- */
+  /* Bron */
   const form = $("#bookingForm");
   form.date.min = new Date().toISOString().slice(0, 10);
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
     const d = Object.fromEntries(new FormData(form));
-    const text =
-      `Feredun Cafe — joy band qilish\n` +
-      `Ism: ${d.name}\nTelefon: ${d.phone}\nSana: ${d.date}, ${d.time}\n` +
-      `Mehmonlar: ${d.guests}\nJoy: ${d.place}` + (d.note ? `\nIzoh: ${d.note}` : "");
+    const text = `Feredun Cafe — joy band qilish\nIsm: ${d.name}\nTelefon: ${d.phone}\nSana: ${d.date}, ${d.time}\nMehmonlar: ${d.guests}\nJoy: ${d.place}` + (d.note ? `\nIzoh: ${d.note}` : "");
     let copied = false;
     try { await navigator.clipboard.writeText(text); copied = true; } catch (_) {}
     const ok = $("#formOk");
     ok.hidden = false;
-    ok.innerHTML =
-      `✅ Bron matni tayyor${copied ? " va nusxalandi" : ""}. Tasdiqlash uchun qo'ng'iroq qiling: ` +
-      `<a href="tel:+998990349595">${PHONE}</a>`;
+    ok.innerHTML = `${icon("check", "i")}<span>Bron matni tayyor${copied ? " va nusxalandi" : ""}. Tasdiqlash uchun qo'ng'iroq qiling: <a href="tel:+998990349595">${PHONE}</a></span>`;
   });
 
-  /* ---------- Toast ---------- */
+  /* Toast */
   let tId;
-  function toast(msg, ms = 2200) {
-    const t = $("#toast");
-    t.textContent = msg;
-    t.classList.add("show");
-    clearTimeout(tId);
-    tId = setTimeout(() => t.classList.remove("show"), ms);
-  }
+  function toast(msg, ms = 2200) { const t = $("#toast"); t.textContent = msg; t.classList.add("show"); clearTimeout(tId); tId = setTimeout(() => t.classList.remove("show"), ms); }
 
-  /* ---------- Reveal animatsiyasi ---------- */
-  const io = new IntersectionObserver(
-    (ents) => ents.forEach((en) => { if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); } }),
-    { threshold: 0.12 }
-  );
+  /* Reveal */
+  const io = new IntersectionObserver((ents) => ents.forEach((en) => { if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); } }), { threshold: 0.12 });
   $$(".reveal").forEach((el) => io.observe(el));
 
   $("#year").textContent = new Date().getFullYear();
