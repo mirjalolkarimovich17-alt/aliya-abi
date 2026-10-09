@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Feredun Cafe — Sharqona oilaviy restoran, Termiz</title>
+  <meta name="description" content="Feredun Cafe — Termiz shahridagi sharqona oilaviy restoran. Shashliklar, jo'ja tabaka, barra, banket zali, karaoke va disko bar. Har kuni 10:00–23:00." />
+  <meta name="theme-color" content="#14100c" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔥</text></svg>" />
+</head>
+<body>
+
+  <!-- ========== NAVBAR ========== -->
+  <header class="nav" id="nav">
+    <div class="container nav__inner">
+      <a href="#home" class="logo">
+        <span class="logo__mark">F</span>
+        <span class="logo__text">Feredun<small>Sharqona oilaviy restoran</small></span>
+      </a>
+      <nav class="nav__links" id="navLinks">
+        <a href="#about">Biz haqimizda</a>
+        <a href="#menu">Menyu</a>
+        <a href="#halls">Zallar</a>
+        <a href="#gallery">Galereya</a>
+        <a href="#contact">Aloqa</a>
+        <a href="#booking" class="btn btn--gold btn--sm nav__cta">Joy band qilish</a>
+      </nav>
+      <button class="burger" id="burger" aria-label="Menyuni ochish"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <!-- ========== HERO ========== -->
+  <section class="hero" id="home">
+    <div class="hero__bg"></div>
+    <div class="container hero__content">
+      <p class="eyebrow reveal">Termiz · 5-kichik daha</p>
+      <h1 class="hero__title reveal">Sharqona ta'm,<br><em>oilaviy</em> iliqlik</h1>
+      <p class="hero__lead reveal">Ko'mirda pishgan shashliklar, jo'ja tabaka va o'ziga xos barra. Oila bilan hordiq, tug'ilgan kun va banketlar uchun Termizdagi eng shinam maskan.</p>
+      <div class="hero__actions reveal">
+        <a href="#menu" class="btn btn--gold">Menyuni ko'rish</a>
+        <a href="tel:+998990349595" class="btn btn--ghost">📞 +998 99 034-95-95</a>
+      </div>
+      <ul class="hero__stats reveal">
+        <li><strong>10:00–23:00</strong><span>Har kuni ochiq</span></li>
+        <li><strong>Banket</strong><span>zali mavjud</span></li>
+        <li><strong>Dostavka</strong><span>shahar bo'ylab</span></li>
+      </ul>
+    </div>
+    <a href="#about" class="hero__scroll" aria-label="Pastga">↓</a>
+  </section>
+
+  <!-- ========== ABOUT / FEATURES ========== -->
+  <section class="section" id="about">
+    <div class="container">
+      <div class="section__head reveal">
+        <p class="eyebrow">Biz haqimizda</p>
+        <h2>Feredun — mehmondo'stlik an'anasi</h2>
+        <p class="muted">Termiz shahridagi eng mashhur va shinam maskanlardan biri. Oilaviy hordiq chiqarish va tantanalarni o'tkazish uchun hammasi bor.</p>
+      </div>
+      <div class="features">
+        <article class="feature reveal">
+          <div class="feature__icon">🔥</div>
+          <h3>Ko'mirdagi shashlik</h3>
+          <p>Urama, qo'y, mol, jigar va tovuq — har biri o'z marinadi bilan.</p>
+        </article>
+        <article class="feature reveal">
+          <div class="feature__icon">🎉</div>
+          <h3>Banket zali</h3>
+          <p>Tug'ilgan kun, korporativ kecha va oilaviy bayramlar uchun bezatilgan zal.</p>
+        </article>
+        <article class="feature reveal">
+          <div class="feature__icon">🛋️</div>
+          <h3>Shinam kabinalar</h3>
+          <p>Do'stlar va oila bilan alohida, xotirjam o'tirish uchun.</p>
+        </article>
+        <article class="feature reveal">
+          <div class="feature__icon">🎤</div>
+          <h3>Karaoke & Disko bar</h3>
+          <p>Kuylashni xush ko'ruvchilar uchun karaoke zali va alohida disko bar.</p>
+        </article>
+        <article class="feature reveal">
+          <div class="feature__icon">🛵</div>
+          <h3>Yetkazib berish</h3>
+          <p>Termiz shahri ichida issiq taomlarni uyingizgacha yetkazamiz.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== MENU ========== -->
+  <section class="section section--dark" id="menu">
+    <div class="container">
+      <div class="section__head reveal">
+        <p class="eyebrow">Taomnoma</p>
+        <h2>Bizning menyu</h2>
+        <p class="muted">Taomni bosing — batafsil ko'ring va savatchaga qo'shing.</p>
+      </div>
+
+      <div class="menu-toolbar reveal">
+        <div class="tabs" id="tabs" role="tablist"></div>
+        <label class="search">
+          <span>🔍</span>
+          <input type="search" id="search" placeholder="Taom qidirish..." />
+        </label>
+      </div>
+
+      <div class="menu-grid" id="menuGrid"></div>
+      <p class="empty" id="menuEmpty" hidden>Hech narsa topilmadi 🙁</p>
+      <p class="note">* Narxlar so'mda. Aniq narxlarni telefon orqali so'rang.</p>
+    </div>
+  </section>
+
+  <!-- ========== HALLS ========== -->
+  <section class="section" id="halls">
+    <div class="container">
+      <div class="section__head reveal">
+        <p class="eyebrow">Imkoniyatlar</p>
+        <h2>Har bir tadbir uchun joy</h2>
+      </div>
+      <div class="halls">
+        <article class="hall reveal">
+          <img loading="lazy" src="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?auto=format&fit=crop&w=900&q=75" alt="Banket zali" />
+          <div class="hall__body">
+            <h3>Banket zali</h3>
+            <p>Korporativ kechalar, tug'ilgan kunlar, unashuv va oilaviy bayramlar. Bezak va maxsus menyu kelishiladi.</p>
+            <a href="#booking" class="link">Band qilish →</a>
+          </div>
+        </article>
+        <article class="hall reveal">
+          <img loading="lazy" src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=900&q=75" alt="Kabinalar" />
+          <div class="hall__body">
+            <h3>Kabinalar</h3>
+            <p>Yopiq, shinam kabinalar — oila va do'stlar bilan xotirjam suhbat uchun.</p>
+            <a href="#booking" class="link">Band qilish →</a>
+          </div>
+        </article>
+        <article class="hall reveal">
+          <img loading="lazy" src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=900&q=75" alt="Karaoke va disko bar" />
+          <div class="hall__body">
+            <h3>Karaoke & Disko bar</h3>
+            <p>Sevimli qo'shiqlaringizni kuylang yoki disko barda kechani davom ettiring.</p>
+            <a href="#booking" class="link">Band qilish →</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== GALLERY ========== -->
+  <section class="section section--dark" id="gallery">
+    <div class="container">
+      <div class="section__head reveal">
+        <p class="eyebrow">Galereya</p>
+        <h2>Feredun atmosferasi</h2>
+        <p class="muted">Ko'proq rasmlar — <a class="link" href="https://www.instagram.com/feredun.restaurant/" target="_blank" rel="noopener">@feredun.restaurant</a></p>
+      </div>
+      <div class="gallery" id="gallery-grid"></div>
+    </div>
+  </section>
+
+  <!-- ========== BOOKING ========== -->
+  <section class="section" id="booking">
+    <div class="container booking">
+      <div class="booking__info reveal">
+        <p class="eyebrow">Bron</p>
+        <h2>Joy band qilish</h2>
+        <p class="muted">Formani to'ldiring — bron matni tayyorlanadi, uni nusxalab yuborishingiz yoki to'g'ridan-to'g'ri qo'ng'iroq qilishingiz mumkin.</p>
+        <div class="phones">
+          <a href="tel:+998990349595" class="phone">📞 +998 (99) 034-95-95</a>
+          <a href="tel:+998902943638" class="phone">📞 +998 (90) 294-36-38</a>
+        </div>
+      </div>
+      <form class="form reveal" id="bookingForm">
+        <div class="form__row">
+          <label>Ismingiz<input name="name" required placeholder="Ism" /></label>
+          <label>Telefon<input name="phone" type="tel" required placeholder="+998 __ ___ __ __" /></label>
+        </div>
+        <div class="form__row">
+          <label>Sana<input name="date" type="date" required /></label>
+          <label>Vaqt<input name="time" type="time" required value="19:00" /></label>
+        </div>
+        <div class="form__row">
+          <label>Mehmonlar soni<input name="guests" type="number" min="1" max="300" value="4" required /></label>
+          <label>Joy turi
+            <select name="place">
+              <option>Umumiy zal</option>
+              <option>Kabina</option>
+              <option>Banket zali</option>
+              <option>Karaoke zali</option>
+            </select>
+          </label>
+        </div>
+        <label>Izoh<textarea name="note" rows="3" placeholder="Tug'ilgan kun, bezak, maxsus istaklar..."></textarea></label>
+        <button class="btn btn--gold btn--block" type="submit">Bron so'rovini tayyorlash</button>
+        <p class="form__ok" id="formOk" hidden></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- ========== CONTACT ========== -->
+  <section class="section section--dark" id="contact">
+    <div class="container contact">
+      <div class="contact__info reveal">
+        <p class="eyebrow">Aloqa</p>
+        <h2>Bizni toping</h2>
+        <ul class="info-list">
+          <li><span>📍</span><div><strong>Manzil</strong>Surxondaryo viloyati, Termiz sh., 5-kichik daha, Alisher Navoiy ko'chasi, 16A-uy</div></li>
+          <li><span>🧭</span><div><strong>Mo'ljal</strong>"Serenada" to'yxonasining ro'parasi</div></li>
+          <li><span>⏰</span><div><strong>Ish vaqti</strong>Har kuni 10:00 – 23:00</div></li>
+          <li><span>📞</span><div><strong>Telefon</strong><a href="tel:+998990349595">+998 (99) 034-95-95</a><br><a href="tel:+998902943638">+998 (90) 294-36-38</a></div></li>
+        </ul>
+        <div class="socials">
+          <a href="https://www.instagram.com/feredun.restaurant/" target="_blank" rel="noopener" class="btn btn--ghost btn--sm">Instagram</a>
+          <a href="https://yandex.uz/maps/org/feredun_cafe/233504928149/" target="_blank" rel="noopener" class="btn btn--ghost btn--sm">Yandex Xarita</a>
+        </div>
+      </div>
+      <div class="map reveal">
+        <iframe title="Feredun Cafe xaritada" loading="lazy"
+          src="https://yandex.uz/map-widget/v1/?oid=233504928149&z=16&l=map"
+          allowfullscreen></iframe>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <a href="#home" class="logo"><span class="logo__mark">F</span><span class="logo__text">Feredun<small>Sharqona oilaviy restoran</small></span></a>
+      <p>© <span id="year"></span> Feredun Cafe · Termiz</p>
+    </div>
+  </footer>
+
+  <!-- ========== CART FAB + DRAWER ========== -->
+  <button class="cart-fab" id="cartFab" aria-label="Savatcha">🛒<span id="cartCount">0</span></button>
+  <aside class="drawer" id="drawer" aria-hidden="true">
+    <div class="drawer__head">
+      <h3>Buyurtma</h3>
+      <button class="icon-btn" data-close-drawer aria-label="Yopish">✕</button>
+    </div>
+    <div class="drawer__list" id="cartList"></div>
+    <div class="drawer__foot">
+      <div class="total"><span>Jami:</span><strong id="cartTotal">0 so'm</strong></div>
+      <button class="btn btn--gold btn--block" id="orderBtn" type="button">Buyurtma matnini nusxalash</button>
+      <a class="btn btn--ghost btn--block" href="tel:+998990349595">Qo'ng'iroq qilish</a>
+    </div>
+  </aside>
+  <div class="overlay" id="overlay"></div>
+
+  <!-- ========== DISH MODAL ========== -->
+  <div class="modal" id="modal" aria-hidden="true">
+    <div class="modal__card">
+      <button class="icon-btn modal__close" data-close-modal aria-label="Yopish">✕</button>
+      <img id="modalImg" alt="" />
+      <div class="modal__body">
+        <span class="badge" id="modalBadge"></span>
+        <h3 id="modalTitle"></h3>
+        <p class="muted" id="modalDesc"></p>
+        <div class="modal__foot">
+          <div><strong id="modalPrice"></strong> <small class="muted" id="modalUnit"></small></div>
+          <button class="btn btn--gold" id="modalAdd">Savatchaga qo'shish</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="js/menu-data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
