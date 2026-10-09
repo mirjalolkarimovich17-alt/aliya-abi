@@ -130,6 +130,7 @@ h2 { font-size: clamp(2.2rem, 4.5vw, 3.4rem); }
 .add { display: inline-flex; align-items: center; gap: .4rem; font-size: .75rem; letter-spacing: .08em; text-transform: uppercase; padding: .45rem .8rem; border: 1px solid var(--line); border-radius: var(--radius); transition: .2s; }
 .add:hover { background: var(--text); color: var(--bg); border-color: var(--text); }
 .img--missing { opacity: 0; }
+.ph { background: #e9e3da url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23b3a796' stroke-width='1' stroke-linecap='round' stroke-linejoin='round'><path d='M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2M7 2v20M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3zm0 0v7'/></svg>") center / 56px no-repeat !important; }
 .empty { text-align: center; color: var(--muted); padding: 3rem 0; }
 .note { text-align: center; color: var(--muted); font-size: .78rem; margin-top: 3.5rem; }
 
@@ -316,7 +317,7 @@ h2 { font-size: clamp(2.2rem, 4.5vw, 3.4rem); }
 
 <!-- HERO -->
 <section class="hero" id="home">
-  <img class="hero__img" src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=2000&q=80" alt="Ko'mirda pishayotgan shashlik" />
+  <img class="hero__img" data-unsplash="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=2000&q=80" data-kw="shashlik,grill" alt="Ko'mirda pishayotgan shashlik" />
   <div class="container hero__content">
     <p class="eyebrow reveal">Sharqona oilaviy restoran</p>
     <h1 class="hero__title reveal">Sharqona ta'm, oilaviy iliqlik</h1>
@@ -337,7 +338,7 @@ h2 { font-size: clamp(2.2rem, 4.5vw, 3.4rem); }
 <section class="section" id="about">
   <div class="container">
     <div class="about">
-      <img class="about__img reveal" loading="lazy" src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1000&q=80" alt="Restoran zali" />
+      <img class="about__img reveal" loading="lazy" data-unsplash="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1000&q=80" data-kw="restaurant,interior" alt="Restoran zali" />
       <div class="about__text reveal">
         <p class="eyebrow">Biz haqimizda</p>
         <h2>Mehmondo'stlik an'anasi</h2>
@@ -383,21 +384,21 @@ h2 { font-size: clamp(2.2rem, 4.5vw, 3.4rem); }
     </div>
     <div class="halls">
       <article class="hall reveal">
-        <div class="hall__img"><img loading="lazy" src="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?auto=format&fit=crop&w=900&q=80" alt="Banket zali" /></div>
+        <div class="hall__img"><img loading="lazy" data-unsplash="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?auto=format&fit=crop&w=900&q=80" data-kw="banquet,hall" alt="Banket zali" /></div>
         <span class="hall__num">01</span>
         <h3>Banket zali</h3>
         <p>Tug'ilgan kun, korporativ kecha va oilaviy bayramlar. Bezak va maxsus menyu kelishiladi.</p>
         <a href="#booking" class="link">Band qilish <svg class="i i--sm"><use href="#i-arrow"/></svg></a>
       </article>
       <article class="hall reveal">
-        <div class="hall__img"><img loading="lazy" src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=900&q=80" alt="Kabinalar" /></div>
+        <div class="hall__img"><img loading="lazy" data-unsplash="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=900&q=80" data-kw="restaurant,booth" alt="Kabinalar" /></div>
         <span class="hall__num">02</span>
         <h3>Kabinalar</h3>
         <p>Yopiq, shinam kabinalar — oila va do'stlar bilan xotirjam suhbat uchun.</p>
         <a href="#booking" class="link">Band qilish <svg class="i i--sm"><use href="#i-arrow"/></svg></a>
       </article>
       <article class="hall reveal">
-        <div class="hall__img"><img loading="lazy" src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=900&q=80" alt="Karaoke va disko bar" /></div>
+        <div class="hall__img"><img loading="lazy" data-unsplash="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=900&q=80" data-kw="karaoke,party" alt="Karaoke va disko bar" /></div>
         <span class="hall__num">03</span>
         <h3>Karaoke & Disko bar</h3>
         <p>Sevimli qo'shiqlaringizni kuylang yoki kechani disko barda davom ettiring.</p>
@@ -583,12 +584,12 @@ window.MENU_ITEMS = [
 ];
 
 window.GALLERY = [
-  { src: "images/gallery/1.jpg", fallback: U("photo-1517248135467-4c7edcad34c4"), title: "Asosiy zal" },
-  { src: "images/gallery/2.jpg", fallback: U("photo-1555939594-58d7cb561ad1"), title: "Mangal" },
-  { src: "images/gallery/3.jpg", fallback: U("photo-1519671482749-fd09be7ccebf"), title: "Banket zali" },
-  { src: "images/gallery/4.jpg", fallback: U("photo-1555396273-367ea4eb4db5"), title: "Kabinalar" },
-  { src: "images/gallery/5.jpg", fallback: U("photo-1414235077428-338989a2e8c0"), title: "Dasturxon" },
-  { src: "images/gallery/6.jpg", fallback: U("photo-1516450360452-9312f5e86fc7"), title: "Disko bar" },
+  { src: "images/gallery/1.jpg", fallback: U("photo-1517248135467-4c7edcad34c4"), title: "Asosiy zal", kw: "restaurant,interior" },
+  { src: "images/gallery/2.jpg", fallback: U("photo-1555939594-58d7cb561ad1"), title: "Mangal", kw: "barbecue,grill" },
+  { src: "images/gallery/3.jpg", fallback: U("photo-1519671482749-fd09be7ccebf"), title: "Banket zali", kw: "banquet,hall" },
+  { src: "images/gallery/4.jpg", fallback: U("photo-1555396273-367ea4eb4db5"), title: "Kabinalar", kw: "restaurant,booth" },
+  { src: "images/gallery/5.jpg", fallback: U("photo-1414235077428-338989a2e8c0"), title: "Dasturxon", kw: "dinner,table" },
+  { src: "images/gallery/6.jpg", fallback: U("photo-1516450360452-9312f5e86fc7"), title: "Disko bar", kw: "nightclub" },
 ];
 </script>
 <script>
@@ -599,14 +600,37 @@ window.GALLERY = [
   const icon = (name, cls = "i i--sm") => `<svg class="${cls}"><use href="#i-${name}"/></svg>`;
   const PHONE = "+998 (99) 034-95-95";
 
-  function smartImg(img, local, fallback) {
-    img.dataset.stage = "local";
+  /* Rasm: mahalliy fayl -> Unsplash -> LoremFlickr (kalit so'z bo'yicha) -> chiroyli zaxira */
+  const LF = (kw, lock) => `https://loremflickr.com/800/800/${kw}?lock=${lock}`;
+  let lockN = 1;
+  function smartImg(img, sources) {
+    const list = sources.filter(Boolean);
+    let i = 0;
+    img.classList.remove("ph");
     img.onerror = () => {
-      if (img.dataset.stage === "local" && fallback) { img.dataset.stage = "remote"; img.src = fallback; }
-      else { img.onerror = null; img.classList.add("img--missing"); img.removeAttribute("src"); }
+      i++;
+      if (i < list.length) img.src = list[i];
+      else {
+        img.onerror = null;
+        img.src = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
+        if (!img.matches(".hero__img")) img.classList.add("ph");
+      }
     };
-    img.src = local;
+    img.src = list[0];
   }
+  const KW = {
+    "urama-shashlik": "kebab,skewer", "qoy-shashlik": "shashlik,lamb", "mol-shashlik": "beef,skewer",
+    "jigar-shashlik": "liver,kebab", "tovuq-shashlik": "chicken,skewer", "assorti-shashlik": "kebab,platter",
+    "joja-tabaka": "roast,chicken", "barra": "roast,lamb", "qozon-kabob": "lamb,potatoes", "steyk": "steak",
+    "gril-sabzavot": "grilled,vegetables", "osh": "plov", "manti": "manti,dumplings", "somsa": "samsa",
+    "lagmon": "lagman,noodles", "achchiq-chuchuk": "tomato,salad", "sezar": "caesar,salad", "grek": "greek,salad",
+    "feredun-salat": "salad,beef", "shorva": "lamb,soup", "mastava": "rice,soup", "chak-chak": "honey,dessert",
+    "tort": "cake,slice", "muzqaymoq": "icecream", "kok-choy": "green,tea", "limonad": "lemonade",
+    "mojito": "mojito", "kofe": "cappuccino",
+  };
+  const itemSrcs = (it) => [`images/menu/${it.id}.jpg`, it.fallback, LF(KW[it.id] || "food", (it.id.length * 7) % 50 + 1)];
+
+  $$("img[data-unsplash]").forEach((img) => smartImg(img, [img.dataset.unsplash, LF(img.dataset.kw, lockN++)]));
 
   /* Navbar */
   const nav = $("#nav");
@@ -652,7 +676,7 @@ window.GALLERY = [
         <div class="dish__row"><h3>${item.name}</h3><span class="price">${fmt(item.price)}</span></div>
         <p>${item.desc}</p>
         <div class="dish__foot"><span class="unit">${item.unit}</span><button class="add" aria-label="Savatchaga qo'shish">${icon("plus")}<span>Qo'shish</span></button></div>`;
-      smartImg($("img", card), `images/menu/${item.id}.jpg`, item.fallback);
+      smartImg($("img", card), itemSrcs(item));
       $(".add", card).addEventListener("click", (e) => { e.stopPropagation(); addToCart(item.id); });
       card.addEventListener("click", () => openModal(item));
       grid.appendChild(card);
@@ -665,7 +689,7 @@ window.GALLERY = [
   let modalItem = null;
   function openModal(item) {
     modalItem = item;
-    smartImg($("#modalImg"), `images/menu/${item.id}.jpg`, item.fallback);
+    smartImg($("#modalImg"), itemSrcs(item));
     $("#modalImg").alt = item.name;
     $("#modalTitle").textContent = item.name;
     $("#modalDesc").textContent = item.desc;
@@ -710,7 +734,7 @@ window.GALLERY = [
       row.className = "cart-row";
       row.innerHTML = `<img alt="" /><div class="cart-row__info"><strong>${it.name}</strong><span>${fmt(it.price)}</span></div>
         <div class="qty"><button data-d="-1" aria-label="Kamaytirish">${icon("minus")}</button><span>${q}</span><button data-d="1" aria-label="Ko'paytirish">${icon("plus")}</button></div>`;
-      smartImg($("img", row), `images/menu/${it.id}.jpg`, it.fallback);
+      smartImg($("img", row), itemSrcs(it));
       $$(".qty button", row).forEach((b) => b.addEventListener("click", () => changeQty(id, +b.dataset.d)));
       list.appendChild(row);
     });
@@ -737,7 +761,7 @@ window.GALLERY = [
   GALLERY.forEach((g) => {
     const fig = document.createElement("figure");
     fig.innerHTML = `<img loading="lazy" alt="${g.title}" /><figcaption>${g.title}</figcaption>`;
-    smartImg($("img", fig), g.src, g.fallback);
+    smartImg($("img", fig), [g.src, g.fallback, LF(g.kw, 10 + GALLERY.indexOf(g))]);
     gal.appendChild(fig);
   });
 
